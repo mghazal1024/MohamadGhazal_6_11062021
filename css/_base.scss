@@ -1,6 +1,16 @@
 :root {
     font-size: 16px;
+    margin: 0;
+    padding: 0;
 }
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+$desktop-break: 680px;
 
 /* ---COLORS------*/
 
@@ -8,6 +18,7 @@ $primary-color: #901C1C;
 $secondary-color: #D3573C;
 $black: #000000;
 $light: #757575;
+$very-light: #C4C4C4;
 
 
 /* ---TYPOGRAPHY---------*/
@@ -16,7 +27,7 @@ $primary-font: 'DM Sans', sans-serif;
 
 %heading-h1, %heading-h2 {
     font-family: $primary-font;
-    font-size: 2.25rem;
+    font-size: 0.9rem;
     line-height: 2.9rem;
     font-weight: 400;
     color: $primary-color;
@@ -24,6 +35,15 @@ $primary-font: 'DM Sans', sans-serif;
 
 %heading-h2 {
     color: $secondary-color;
+    font-size: 2.25rem;
+}
+
+%tag-link {
+    font-family: $primary-font;
+    font-size: 0.75rem;
+    line-height: 0.75rem;
+    font-weight: 500;
+    color: $primary-color;
 }
 
 h1 {
@@ -32,4 +52,15 @@ h1 {
 
 h2 {
     @extend %heading-h2;
+}
+
+
+
+@media screen and (min-width:$desktop-break) {
+
+
+    h1 {
+        font-size: 2.25rem;
+    }
+
 }

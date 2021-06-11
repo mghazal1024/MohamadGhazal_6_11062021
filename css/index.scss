@@ -1,2 +1,54 @@
 @import 'base';
 
+header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 20px;
+    flex-wrap: wrap;
+    .logo-link {
+        max-width: 150px;
+        img {
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+    nav {
+        order: 1;
+        margin: 20px 0px;
+        ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            flex-wrap: wrap;
+            li {
+                height: 22px;
+                border: 1px solid $very-light;
+                border-radius: 11px;
+                display: flex;
+                align-items: center;
+                padding: 0 10px;
+                margin: 0 5px 5px 0;
+                a {
+                    @extend %tag-link;
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (min-width: $desktop-break) {
+    header {
+        flex-wrap: nowrap;
+        padding: 40px;
+        .logo-link {
+            max-width: 200px;
+        }
+        nav {
+            order: 0;
+            margin:  0 40px;
+        }
+    }
+}
