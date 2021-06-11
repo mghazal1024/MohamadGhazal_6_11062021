@@ -1,0 +1,35 @@
+:root {
+    font-size: 16px;
+}
+
+/* ---COLORS------*/
+
+$primary-color: #901C1C;
+$secondary-color: #D3573C;
+$black: #000000;
+$light: #757575;
+
+
+/* ---TYPOGRAPHY---------*/
+
+$primary-font: 'DM Sans', sans-serif;
+
+%heading-h1, %heading-h2 {
+    font-family: $primary-font;
+    font-size: 2.25rem;
+    line-height: 2.9rem;
+    font-weight: 400;
+    color: $primary-color;
+}
+
+%heading-h2 {
+    color: $secondary-color;
+}
+
+h1 {
+    @extend %heading-h1;
+}
+
+h2 {
+    @extend %heading-h2;
+}
