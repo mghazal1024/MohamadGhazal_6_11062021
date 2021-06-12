@@ -23,9 +23,15 @@ header nav ul li, main .photographers__tags li {
   align-items: center;
   padding: 0 10px;
   margin: 0 5px 5px 0;
+  cursor: pointer;
+  transition: 200ms ease-in-out;
 }
 
-header nav ul li a, main .photographers__tags li a {
+header nav ul li:hover, main .photographers__tags li:hover {
+  background-color: #901C1C;
+}
+
+header nav ul li button, main .photographers__tags li a {
   font-family: "DM Sans", sans-serif;
   font-size: 0.75rem;
   line-height: 0.75rem;
@@ -103,6 +109,16 @@ header nav ul {
   flex-wrap: wrap;
 }
 
+header nav ul li button {
+  transition: 200ms ease-in-out;
+  background: none;
+  border: none;
+}
+
+header nav ul li:hover button {
+  color: white;
+}
+
 main {
   display: flex;
   padding: 40px;
@@ -121,6 +137,15 @@ main .photographers__list-item {
   flex-direction: column;
   align-items: center;
   margin-bottom: 40px;
+}
+
+main .photographers__list-item h2 {
+  cursor: pointer;
+  transition: 200ms ease-in-out;
+}
+
+main .photographers__list-item h2:hover {
+  text-decoration: underline;
 }
 
 main .photographers__portrait {
@@ -144,6 +169,10 @@ main .photographers__tags {
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 5px;
+}
+
+main .photographers__tags li:hover a {
+  color: white;
 }
 
 @media screen and (min-width: 680px) {

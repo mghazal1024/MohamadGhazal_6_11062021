@@ -11,10 +11,31 @@ const loadData = async () => {
     }
 }
 
-loadData().then( (data) => {console.log(data)});
+//Nav Tags
+
+const filterPhotographer = (generalTag) => {
+    console.log(generalTag);
+}
+
+const generalTags = ["portrait", "art", "fashion", "architecture", "travel", "sport", "animals", "events"];
+
+const mainNavList = document.querySelector('header nav ul');
+
+generalTags.map( generalTag => {
+    const tagItem = document.createElement('li');
+    const tagButton = document.createElement('button');
+    tagButton.innerText = "#"+generalTag;
+
+    tagItem.appendChild(tagButton);
+    mainNavList.appendChild(tagItem);
+
+    tagButton.addEventListener('click', () => {
+        console.log('clicked');
+    });
+});
 
 
-
+//Photographers 
 const photographers = document.querySelector('.photographers');
 
 loadData().then( (data) => {
@@ -60,7 +81,7 @@ loadData().then( (data) => {
         pPrice.innerText = photo.price + "€/jour";
         photographer.appendChild(pPrice);
 
-        //Creating the tag
+        //Creating the tags
         const pTagsList = document.createElement('ul');
         pTagsList.classList.add('photographers__tags');
 
@@ -69,7 +90,7 @@ loadData().then( (data) => {
         photo.tags.map ( tag => {
             const tagItem = document.createElement('li');
             const tagLink = document.createElement('a');
-            tagLink.innerText = tag;
+            tagLink.innerText = "#"+tag;
             tagItem.appendChild(tagLink);
             pTagsList.appendChild(tagItem);
             photographer.appendChild(pTagsList);
@@ -77,3 +98,4 @@ loadData().then( (data) => {
     })
 
 });
+

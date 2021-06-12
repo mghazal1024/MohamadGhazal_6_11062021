@@ -24,10 +24,19 @@ header {
             flex-wrap: wrap;
             li {
                 @extend %tag-list-item;
-                a {
+                button {
                     @extend %tag-link;
+                    transition: $basic-transition;
+                    background: none;
+                    border: none;
+                }
+                &:hover {
+                    button {
+                        color: white;
+                    }
                 }
             }
+            
         }
     }
 }
@@ -47,6 +56,13 @@ main {
             flex-direction: column;
             align-items: center;
             margin-bottom: 40px;
+            h2 {
+                cursor: pointer;
+                transition: $basic-transition;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
         }
         &__portrait {
             width: 200px;
@@ -71,6 +87,11 @@ main {
                 @extend %tag-list-item;
                 a {
                     @extend %tag-link;
+                }
+                &:hover {
+                    a {
+                        color: white;
+                    }
                 }
             }
         }

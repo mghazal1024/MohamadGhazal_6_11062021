@@ -15,6 +15,8 @@ html {
 
 $desktop-break: 680px;
 
+$basic-transition: 200ms ease-in-out;
+
 
 /* ---COLORS------*/
 
@@ -40,6 +42,11 @@ $primary-font: 'DM Sans', sans-serif;
     align-items: center;
     padding: 0 10px;
     margin: 0 5px 5px 0;
+    cursor: pointer;
+    transition: $basic-transition;
+    &:hover {
+        background-color: $primary-color;
+    }
 }
 %tag-link {
     font-family: $primary-font;
