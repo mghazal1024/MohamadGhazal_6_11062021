@@ -24,11 +24,15 @@ header {
             flex-wrap: wrap;
             li {
                 @extend %tag-list-item;
+                &:hover {
+                    background-color: $primary-color;
+                }
                 button {
                     @extend %tag-link;
                     transition: $basic-transition;
                     background: none;
                     border: none;
+                    cursor: pointer;
                 }
                 &:hover {
                     button {
@@ -85,13 +89,8 @@ main {
             margin-top: 5px;
             li {
                 @extend %tag-list-item;
-                a {
+                p {
                     @extend %tag-link;
-                }
-                &:hover {
-                    a {
-                        color: white;
-                    }
                 }
             }
         }

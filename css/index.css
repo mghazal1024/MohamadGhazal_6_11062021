@@ -23,15 +23,10 @@ header nav ul li, main .photographers__tags li {
   align-items: center;
   padding: 0 10px;
   margin: 0 5px 5px 0;
-  cursor: pointer;
   transition: 200ms ease-in-out;
 }
 
-header nav ul li:hover, main .photographers__tags li:hover {
-  background-color: #901C1C;
-}
-
-header nav ul li button, main .photographers__tags li a {
+header nav ul li button, main .photographers__tags li p {
   font-family: "DM Sans", sans-serif;
   font-size: 0.75rem;
   line-height: 0.75rem;
@@ -50,6 +45,7 @@ h1, h2, h4 {
 h2 {
   color: #D3573C;
   font-size: 2.25rem;
+  text-align: center;
 }
 
 h4 {
@@ -109,10 +105,15 @@ header nav ul {
   flex-wrap: wrap;
 }
 
+header nav ul li:hover {
+  background-color: #901C1C;
+}
+
 header nav ul li button {
   transition: 200ms ease-in-out;
   background: none;
   border: none;
+  cursor: pointer;
 }
 
 header nav ul li:hover button {
@@ -169,10 +170,6 @@ main .photographers__tags {
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 5px;
-}
-
-main .photographers__tags li:hover a {
-  color: white;
 }
 
 @media screen and (min-width: 680px) {
