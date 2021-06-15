@@ -24,21 +24,31 @@ header {
             flex-wrap: wrap;
             li {
                 @extend %tag-list-item;
+                cursor: pointer;
                 &:hover {
                     background-color: $primary-color;
+                    color: white;
                 }
-                button {
-                    @extend %tag-link;
-                    transition: $basic-transition;
-                    background: none;
-                    border: none;
-                    cursor: pointer;
-                }
-                &:hover {
-                    button {
-                        color: white;
-                    }
-                }
+                // &:hover {
+                //     background-color: $primary-color;
+                // }
+                // button {
+                //     @extend %tag-link;
+                //     transition: $basic-transition;
+                //     background: none;
+                //     border: none;
+                //     cursor: pointer;
+                    
+                // }
+                // &:hover {
+                //     button {
+                //         color: white;
+                //     }
+                // }
+            }
+            li.selected {
+                background-color: $primary-color;
+                color: white;
             }
             
         }
@@ -89,9 +99,6 @@ main {
             margin-top: 5px;
             li {
                 @extend %tag-list-item;
-                p {
-                    @extend %tag-link;
-                }
             }
         }
     }
@@ -114,7 +121,7 @@ main {
     main {
         padding: 100px 40px;
         .photographers {
-            justify-content: space-between;
+            justify-content: space-evenly;
             &__list-item {
                 width: 30%;
             }

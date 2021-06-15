@@ -43,6 +43,11 @@ $primary-font: 'DM Sans', sans-serif;
     padding: 0 10px;
     margin: 0 5px 5px 0;
     transition: $basic-transition;
+    font-family: $primary-font;
+    font-size: 0.75rem;
+    line-height: 0.75rem;
+    font-weight: 500;
+    color: $primary-color;
 }
 %tag-link {
     font-family: $primary-font;
