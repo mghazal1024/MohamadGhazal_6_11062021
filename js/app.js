@@ -25,7 +25,11 @@ class PhotographerListItem {
     // constructor (singlePhotographer){
     //     this.singlePhotographer = singlePhotographer;
     // }
+
+    creteElement(element,)
     createPhotographer(singlePhotographer) {
+
+        const fragment = new DocumentFragment();
 
         //Creating the main li container
         const photographer = document.createElement('li');
@@ -39,7 +43,8 @@ class PhotographerListItem {
         pPortrait.src = `/images/${singlePhotographer.portrait}`;
 
         pPortraitContainer.appendChild(pPortrait);
-        photographer.appendChild(pPortraitContainer);
+        // photographer.appendChild(pPortraitContainer);
+        fragment.appendChild(pPortraitContainer);
 
         //Creating the photographers name that links to the page
         const pLink = document.createElement('a');
@@ -47,24 +52,28 @@ class PhotographerListItem {
 
         pName.innerText = singlePhotographer.name;
         pLink.appendChild(pName);
-        photographer.appendChild(pLink);
+        // photographer.appendChild(pLink);
+        fragment.appendChild(pLink);
         photographers.appendChild(photographer);
     
         //Creating the city name
         const pCity = document.createElement('h4');
         pCity.innerText = `${singlePhotographer.city}, ${singlePhotographer.country}`;
-        photographer.appendChild(pCity);
+        // photographer.appendChild(pCity);
+        fragment.appendChild(pCity);
 
         //Creating the tagline
         const pTagline = document.createElement('p');
         pTagline.innerText = singlePhotographer.tagline;
-        photographer.appendChild(pTagline);
+        // photographer.appendChild(pTagline);
+        fragment.appendChild(pTagline);
 
         //Creating the price
         const pPrice = document.createElement('p');
         pPrice.classList.add('p--small', 'p--light-color');
         pPrice.innerText = `${singlePhotographer.price}€/Jour`;
-        photographer.appendChild(pPrice);
+        // photographer.appendChild(pPrice);
+        fragment.appendChild(pPrice);
 
         //Creating the tags
         const pTagsList = document.createElement('ul');
@@ -74,8 +83,12 @@ class PhotographerListItem {
             const tagItem = document.createElement('li');
             tagItem.innerText = `#${tag}`;
             pTagsList.appendChild(tagItem);
-            photographer.appendChild(pTagsList);
+            // photographer.appendChild(pTagsList);
+            fragment.appendChild(pTagsList)
         })
+
+        photographer.appendChild(fragment);
+        console.log(fragment);
 
         return photographer;
     }
