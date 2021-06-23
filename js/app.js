@@ -39,13 +39,22 @@ const photographerFactory = (portrait, name, city, country, tagline, price, tags
     const photographer = document.createElement('li');
     photographer.classList.add('photographers__list-item');
     photographers.appendChild(photographer);
+
+    // function to create the elements
+    const createElement = (type, className) => {
+        const el = document.createElement(type);
+        if(className){
+            el.classList.add(className);
+        }
+        return el;
+    }
+
     
     const createPortrait = () => {
         //Creating the photographers portraits
-        const pPortraitContainer = document.createElement('div');
-        pPortraitContainer.classList.add('photographers__portrait');
+        const pPortraitContainer = createElement('div', 'photographers__portrait');
 
-        const pPortrait = document.createElement('img');
+        const pPortrait = createElement('img');
         pPortrait.src = `/images/${getPortrait()}`;
 
         pPortraitContainer.appendChild(pPortrait);
@@ -55,8 +64,8 @@ const photographerFactory = (portrait, name, city, country, tagline, price, tags
 
     const createName = () => {
         //Creating the photographers name that links to the page
-        const pLink = document.createElement('a');
-        const pName = document.createElement('h2');
+        const pLink = createElement('a');
+        const pName = createElement('h2');
 
         pName.innerText = getName();
         pLink.appendChild(pName);
@@ -66,21 +75,21 @@ const photographerFactory = (portrait, name, city, country, tagline, price, tags
 
     const createOrigin = () => {
         //Creating the city name
-        const pCity = document.createElement('h4');
+        const pCity = createElement('h4');
         pCity.innerText = `${getCity()}, ${getCountry()}`;
         photographer.appendChild(pCity);
     }
 
     const createTagline = () => {
         //Creating the tagline
-        const pTagline = document.createElement('p');
+        const pTagline = createElement('p');
         pTagline.innerText = getTagline();
         photographer.appendChild(pTagline);
     }
 
     const createPrice = () => {
         //Creating the price
-        const pPrice = document.createElement('p');
+        const pPrice = createElement('p');
         pPrice.classList.add('p--small', 'p--light-color');
         pPrice.innerText = `${getPrice()}€/Jour`;
         photographer.appendChild(pPrice);
@@ -88,11 +97,10 @@ const photographerFactory = (portrait, name, city, country, tagline, price, tags
 
     const createTags = () => {
         //Creating the tags
-        const pTagsList = document.createElement('ul');
-        pTagsList.classList.add('photographers__tags');
+        const pTagsList = createElement('ul', 'photographers__tags');
 
         getTags().map ( tag => {
-            const tagItem = document.createElement('li');
+            const tagItem = createElement('li');
             tagItem.innerText = `#${tag}`;
             pTagsList.appendChild(tagItem);
             photographer.appendChild(pTagsList);
@@ -100,71 +108,6 @@ const photographerFactory = (portrait, name, city, country, tagline, price, tags
     }
 
     return {createPortrait, createName, createOrigin, createTagline, createPrice, createTags };
-}
-
-
-
-
-
-// Class to hold the photographers intro thumbnails and creates them
-class PhotographerListItem {
-
-
-    createPhotographer(singlePhotographer) {
-
-
-        //Creating the main li container
-        const photographer = document.createElement('li');
-        photographer.classList.add('photographers__list-item');
-
-        //Creating the photographers portraits
-        const pPortraitContainer = document.createElement('div');
-        pPortraitContainer.classList.add('photographers__portrait');
-
-        const pPortrait = document.createElement('img');
-        pPortrait.src = `/images/${singlePhotographer.portrait}`;
-
-        pPortraitContainer.appendChild(pPortrait);
-        photographer.appendChild(pPortraitContainer);
-
-        //Creating the photographers name that links to the page
-        const pLink = document.createElement('a');
-        const pName = document.createElement('h2');
-
-        pName.innerText = singlePhotographer.name;
-        pLink.appendChild(pName);
-        photographer.appendChild(pLink);
-        photographers.appendChild(photographer);
-    
-        //Creating the city name
-        const pCity = document.createElement('h4');
-        pCity.innerText = `${singlePhotographer.city}, ${singlePhotographer.country}`;
-        photographer.appendChild(pCity);
-
-        //Creating the tagline
-        const pTagline = document.createElement('p');
-        pTagline.innerText = singlePhotographer.tagline;
-        photographer.appendChild(pTagline);
-
-        //Creating the price
-        const pPrice = document.createElement('p');
-        pPrice.classList.add('p--small', 'p--light-color');
-        pPrice.innerText = `${singlePhotographer.price}€/Jour`;
-        photographer.appendChild(pPrice);
-
-        //Creating the tags
-        const pTagsList = document.createElement('ul');
-        pTagsList.classList.add('photographers__tags');
-
-        singlePhotographer.tags.map ( tag => {
-            const tagItem = document.createElement('li');
-            tagItem.innerText = `#${tag}`;
-            pTagsList.appendChild(tagItem);
-            photographer.appendChild(pTagsList);
-        })
-
-        return photographer;
-    }
 }
 
 
@@ -196,8 +139,14 @@ loadData().then( (data) => {
             photographers.innerHTML=""; // not fully deleting I think!
             
             filteredData.map( singlePhotographer => {
-                let photographer = new PhotographerListItem;
-                photographer.createPhotographer(singlePhotographer);
+                let {portrait, name, city, country, tagline, price, tags} = singlePhotographer;
+                let p = photographerFactory(portrait, name, city, country, tagline, price, tags);
+                p.createPortrait();
+                p.createName();
+                p.createOrigin();
+                p.createTagline();
+                p.createPrice();
+                p.createTags();
             })
 
         })
@@ -207,19 +156,6 @@ loadData().then( (data) => {
 
     //Initial Render
     data.photographers.map( singlePhotographer => {
-
-        // let photographer = new PhotographerListItem;
-        // photographer.createPhotographer(singlePhotographer);
-
-
-        // let {portrait, name, city, country, price, tagline, tags } = singlePhotographer
-        // let p = PhotographerFactory(portrait, name, city, country, price, tagline, tags);
-        // p.createPortrait();
-        // p.createName();
-        // p.createOrigin();
-        // p.createPrice();
-        // p.createTagline();
-        // p.createTags();
 
         let {portrait, name, city, country, tagline, price, tags} = singlePhotographer;
         let p = photographerFactory(portrait, name, city, country, tagline, price, tags);
