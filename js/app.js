@@ -38,6 +38,8 @@ const photographerFactory = (portrait, name, city, country, tagline, price, tags
     //Creating the main li container
     const photographer = document.createElement('li');
     photographer.classList.add('photographers__list-item');
+    photographer.setAttribute('aria-labelledby', 'photographer');
+    photographer.setAttribute('tabIndex', "0");
     photographers.appendChild(photographer);
 
     // function to create the elements
@@ -121,6 +123,7 @@ loadData().then( (data) => {
     generalTags.map( generalTag => {
         const tagItem = document.createElement('li');
         tagItem.innerText = `#${generalTag}`;
+        tagItem.setAttribute('tabIndex', "0");
     
         mainNavList.appendChild(tagItem);
 
