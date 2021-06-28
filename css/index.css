@@ -234,8 +234,8 @@ main#photographer .photographers__portrait {
     padding: 40px;
     margin: 0 40px;
     box-sizing: border-box;
-    display: flex;
-    justify-content: space-between;
+    grid-template-columns: 1fr 200px;
+    column-gap: 40px;
   }
   main#photographer .photographer__info {
     width: unset;

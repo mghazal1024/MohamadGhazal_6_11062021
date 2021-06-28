@@ -114,7 +114,6 @@ const photographerFactory = (portrait, name, city, country, tagline, price, tags
 
 
 
-
 loadData().then( (data) => {
 
     const generalTags = ["portrait", "art", "fashion", "architecture", "travel", "sport", "animals", "events"];
@@ -139,7 +138,8 @@ loadData().then( (data) => {
             //Creating the filtered data and re-rendering the page
             const filteredData = data.photographers.filter( d => d.tags.includes(generalTag));
             
-            photographers.innerHTML=""; // not fully deleting I think!
+            
+            photographers.innerHTML=""; 
             
             filteredData.map( singlePhotographer => {
                 let {portrait, name, city, country, tagline, price, tags} = singlePhotographer;
@@ -154,8 +154,6 @@ loadData().then( (data) => {
 
         })
     });
-
-
 
     //Initial Render
     data.photographers.map( singlePhotographer => {
