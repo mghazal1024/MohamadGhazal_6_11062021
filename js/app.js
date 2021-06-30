@@ -15,6 +15,7 @@ const loadData = async () => {
 
 
 
+
 //DOM ELEMENTS
 // Main nav
 const mainNavList = document.querySelector('header nav ul');
@@ -61,7 +62,6 @@ const photographerFactory = (portrait, name, city, country, tagline, price, tags
 
         pPortraitContainer.appendChild(pPortrait);
         photographer.appendChild(pPortraitContainer);
-        console.log(photographer);
     }
 
     const createName = () => {
@@ -168,6 +168,59 @@ loadData().then( (data) => {
         p.createTags();
     })
 
+    
+
 });
+
+// loadData().then((data => {
+
+//     let RenderdingComponent = (props = {}) => {
+//         let state = {
+//             data: props.dataToMap || data.photographers
+//         }
+
+//         const generalTags = ["portrait", "art", "fashion", "architecture", "travel", "sport", "animals", "events"]; 
+
+//         generalTags.map( generalTag => {
+//             const tagItem = document.createElement('li');
+//             tagItem.innerText = `#${generalTag}`;
+//             tagItem.setAttribute('tabIndex', "0");
+
+//             mainNavList.appendChild(tagItem);
+
+//             tagItem.addEventListener('click', () => {
+//                 const navListItems = [...document.querySelectorAll('nav ul li')];
+//                 navListItems.map(listItem => {
+//                     listItem.classList.remove('selected');
+//                 })
+//                 tagItem.classList.add('selected');
+
+//                 const filteredData = data.photographers.filter( d => d.tags.includes(generalTag));
+
+//                 photographers.innerHTML = "";
+//                 state.data = filteredData;
+//                 console.log(state.data)
+//             })               
+
+//         })
+//         console.log(state.data)
+//         state.data.map( singlePhotographer => {
+//             let {portrait, name, city, country, tagline, price, tags} = singlePhotographer;
+//                 let p = photographerFactory(portrait, name, city, country, tagline, price, tags);
+//                 p.createPortrait();
+//                 p.createName();
+//                 p.createOrigin();
+//                 p.createTagline();
+//                 p.createPrice();
+//                 p.createTags();
+//         })
+
+//     }
+
+//     RenderdingComponent()
+
+// }))
+
+
 
 
