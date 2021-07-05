@@ -16,24 +16,37 @@
             <a class="logo-link"><img src="/images/logo.svg" alt="Fisheye Home page"/></a>
         </header>
 
-        <main id="photographer">
-            <div class="photographer__info">
-                <div class="photographer__info-contact">
-                    <h1>Mimi Keel</h1>
-                    <button>Contactez-moi</button>
+        <main class="photographer">
+            <section class="photographer__intro">
+                <div class="photographer__info">
+                    <div class="photographer__info-contact">
+                        <h1>Mimi Keel</h1>
+                        <button>Contactez-moi</button>
+                    </div>
+                    <h4>London, UK</h4>
+                    <p>Voir le beau dans le quotidien</p>
+                    <ul class="photographer__tags">
+                        <li>#portrait</li>
+                        <li>#events</li>
+                        <li>#travel</li>
+                        <li>#animals</li>
+                    </ul>
                 </div>
-                <h4>London, UK</h4>
-                <p>Voir le beau dans le quotidien</p>
-                <ul class="photographers__tags">
-                    <li>#portrait</li>
-                    <li>#events</li>
-                    <li>#travel</li>
-                    <li>#animals</li>
-                </ul>
-            </div>
-            <div class="photographers__portrait">
-                <img src="/images/MimiKeel.jpg" alt="Mimi Keel" />
-            </div>
+                <div class="photographer__portrait">
+                    <img src="/images/MimiKeel.jpg" alt="Mimi Keel" />
+                </div>
+            </section>
+
+            <section class="photos">
+                <div class="photos__sort">
+                    <label for="sort-select">Trier par</label>
+                    <select name="sort" id="sort-select">
+                        <option value="popularite">Popularité</option>
+                        <option value="date">Date</option>
+                        <option value="titre">Titre</option>
+                    </select>
+                </div>
+            </section>
         </main>
     
         <script src="/js/photographer.js"></script>
