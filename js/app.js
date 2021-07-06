@@ -112,6 +112,19 @@ const photographerFactory = (portrait, name, city, country, tagline, price, tags
     return {createPortrait, createName, createOrigin, createTagline, createPrice, createTags };
 }
 
+const dataRender = (data) => {
+    data.map( singlePhotographer => {
+        let {portrait, name, city, country, tagline, price, tags} = singlePhotographer;
+        let p = photographerFactory(portrait, name, city, country, tagline, price, tags);
+        p.createPortrait();
+        p.createName();
+        p.createOrigin();
+        p.createTagline();
+        p.createPrice();
+        p.createTags();
+    })
+}
+
 
 
 loadData().then( (data) => {
@@ -141,32 +154,34 @@ loadData().then( (data) => {
             
             photographers.innerHTML=""; 
             
-            filteredData.map( singlePhotographer => {
-                let {portrait, name, city, country, tagline, price, tags} = singlePhotographer;
-                let p = photographerFactory(portrait, name, city, country, tagline, price, tags);
-                p.createPortrait();
-                p.createName();
-                p.createOrigin();
-                p.createTagline();
-                p.createPrice();
-                p.createTags();
-            })
+            dataRender(filteredData);
+            // filteredData.map( singlePhotographer => {
+            //     let {portrait, name, city, country, tagline, price, tags} = singlePhotographer;
+            //     let p = photographerFactory(portrait, name, city, country, tagline, price, tags);
+            //     p.createPortrait();
+            //     p.createName();
+            //     p.createOrigin();
+            //     p.createTagline();
+            //     p.createPrice();
+            //     p.createTags();
+            // })
 
         })
     });
 
     //Initial Render
-    data.photographers.map( singlePhotographer => {
+    // data.photographers.map( singlePhotographer => {
 
-        let {portrait, name, city, country, tagline, price, tags} = singlePhotographer;
-        let p = photographerFactory(portrait, name, city, country, tagline, price, tags);
-        p.createPortrait();
-        p.createName();
-        p.createOrigin();
-        p.createTagline();
-        p.createPrice();
-        p.createTags();
-    })
+    //     let {portrait, name, city, country, tagline, price, tags} = singlePhotographer;
+    //     let p = photographerFactory(portrait, name, city, country, tagline, price, tags);
+    //     p.createPortrait();
+    //     p.createName();
+    //     p.createOrigin();
+    //     p.createTagline();
+    //     p.createPrice();
+    //     p.createTags();
+    // })
+    dataRender(data.photographers);
 
 });
 
