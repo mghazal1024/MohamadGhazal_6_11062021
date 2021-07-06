@@ -23,6 +23,31 @@ const photographers = document.querySelector('.photographers');
 
 
 
+// FUNCTIONs -------//
+// Function to render the data on the DOM using the Factory methods
+const dataRender = (data) => {
+    data.map( singlePhotographer => {
+        let {portrait, name, city, country, tagline, price, tags} = singlePhotographer;
+        let p = photographerFactory(portrait, name, city, country, tagline, price, tags);
+        p.createPortrait();
+        p.createName();
+        p.createOrigin();
+        p.createTagline();
+        p.createPrice();
+        p.createTags();
+    })
+}
+
+// Function to toggle selected class name on a mapped element
+const toggleSelected = (items, item) => {
+    items.map(item => {
+        item.classList.remove('selected');
+    })
+    item.classList.add('selected');
+}
+
+
+
 
 // FACTORY FUNCTION
 const photographerFactory = (portrait, name, city, country, tagline, price, tags) => {
@@ -51,9 +76,8 @@ const photographerFactory = (portrait, name, city, country, tagline, price, tags
         return el;
     }
 
-    
+    //Creating the photographers portraits
     const createPortrait = () => {
-        //Creating the photographers portraits
         const pPortraitContainer = createElement('div', 'photographers__portrait');
 
         const pPortrait = createElement('img');
@@ -61,11 +85,10 @@ const photographerFactory = (portrait, name, city, country, tagline, price, tags
 
         pPortraitContainer.appendChild(pPortrait);
         photographer.appendChild(pPortraitContainer);
-        console.log(photographer);
     }
 
+    //Creating the photographers name that links to the page
     const createName = () => {
-        //Creating the photographers name that links to the page
         const pLink = createElement('a');
         const pName = createElement('h2');
 
@@ -75,30 +98,30 @@ const photographerFactory = (portrait, name, city, country, tagline, price, tags
         photographers.appendChild(photographer);
     }
 
+    //Creating the city and country name
     const createOrigin = () => {
-        //Creating the city name
         const pCity = createElement('h4');
         pCity.innerText = `${getCity()}, ${getCountry()}`;
         photographer.appendChild(pCity);
     }
 
+    //Creating the tagline
     const createTagline = () => {
-        //Creating the tagline
         const pTagline = createElement('p');
         pTagline.innerText = getTagline();
         photographer.appendChild(pTagline);
     }
 
+    //Creating the price
     const createPrice = () => {
-        //Creating the price
         const pPrice = createElement('p');
         pPrice.classList.add('p--small', 'p--light-color');
         pPrice.innerText = `${getPrice()}€/Jour`;
         photographer.appendChild(pPrice);
     }
 
+    //Creating the tags
     const createTags = () => {
-        //Creating the tags
         const pTagsList = createElement('ul', 'photographers__tags');
 
         getTags().map ( tag => {
@@ -112,75 +135,52 @@ const photographerFactory = (portrait, name, city, country, tagline, price, tags
     return {createPortrait, createName, createOrigin, createTagline, createPrice, createTags };
 }
 
-const dataRender = (data) => {
-    data.map( singlePhotographer => {
-        let {portrait, name, city, country, tagline, price, tags} = singlePhotographer;
-        let p = photographerFactory(portrait, name, city, country, tagline, price, tags);
-        p.createPortrait();
-        p.createName();
-        p.createOrigin();
-        p.createTagline();
-        p.createPrice();
-        p.createTags();
-    })
-}
 
 
-
+//Loading the data promise and using it
 loadData().then( (data) => {
 
-    const generalTags = ["portrait", "art", "fashion", "architecture", "travel", "sport", "animals", "events"];
+    //Adding an ALL tag to the main navigation
+    const allTag = document.createElement('li')
+    allTag.classList.add('selected');
+    allTag.innerHTML = "#all";
+    mainNavList.appendChild(allTag);
 
     //Creating the nav tag items
+    const generalTags = ["portrait", "art", "fashion", "architecture", "travel", "sport", "animals", "events"];
     generalTags.map( generalTag => {
         const tagItem = document.createElement('li');
         tagItem.innerText = `#${generalTag}`;
-        tagItem.setAttribute('tabIndex', "0");
+        tagItem.setAttribute('tabIndex', '0');
     
         mainNavList.appendChild(tagItem);
-
-        //Click event listener to the tag list items to filter the data
-        tagItem.addEventListener('click', () => {
-            //mapping over the li to change the style on selected
-            const navListItems = [...document.querySelectorAll('nav ul li')];
-            navListItems.map(listItem => {
-                listItem.classList.remove('selected');
-            })
-            tagItem.classList.add('selected');
-
-            //Creating the filtered data and re-rendering the page
-            const filteredData = data.photographers.filter( d => d.tags.includes(generalTag));
-            
-            
-            photographers.innerHTML=""; 
-            
-            dataRender(filteredData);
-            // filteredData.map( singlePhotographer => {
-            //     let {portrait, name, city, country, tagline, price, tags} = singlePhotographer;
-            //     let p = photographerFactory(portrait, name, city, country, tagline, price, tags);
-            //     p.createPortrait();
-            //     p.createName();
-            //     p.createOrigin();
-            //     p.createTagline();
-            //     p.createPrice();
-            //     p.createTags();
-            // })
-
-        })
     });
 
-    //Initial Render
-    // data.photographers.map( singlePhotographer => {
+    //DOM Elements after loading
+    const navListItems = [...document.querySelectorAll('nav ul li')];
 
-    //     let {portrait, name, city, country, tagline, price, tags} = singlePhotographer;
-    //     let p = photographerFactory(portrait, name, city, country, tagline, price, tags);
-    //     p.createPortrait();
-    //     p.createName();
-    //     p.createOrigin();
-    //     p.createTagline();
-    //     p.createPrice();
-    //     p.createTags();
-    // })
+    // Adding click event listener to tag elements in the nav
+    navListItems.map(listItem => {
+        listItem.addEventListener('click', () => {
+            if(listItem.innerText !== "#all") {
+
+                const tag = listItem.innerText.slice(1);
+                const filteredData = data.photographers.filter( d => d.tags.includes(tag));
+
+                toggleSelected(navListItems, listItem);
+                photographers.innerHTML = "";
+                dataRender(filteredData);
+
+            } else {
+
+                toggleSelected(navListItems, listItem);
+                photographers.innerHTML = "";
+                dataRender(data.photographers)
+            }
+        })
+    })
+
+    //Initial Render
     dataRender(data.photographers);
 
 });
