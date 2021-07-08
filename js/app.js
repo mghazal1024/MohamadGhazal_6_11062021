@@ -23,32 +23,6 @@ const photographers = document.querySelector('.photographers');
 
 
 
-// FUNCTIONs -------//
-// Function to render the data on the DOM using the Factory methods
-const dataRender = (data) => {
-    data.map( singlePhotographer => {
-        let {portrait, name, city, country, tagline, price, tags} = singlePhotographer;
-        let p = photographerFactory(portrait, name, city, country, tagline, price, tags);
-        p.createPortrait();
-        p.createName();
-        p.createOrigin();
-        p.createTagline();
-        p.createPrice();
-        p.createTags();
-    })
-}
-
-// Function to toggle selected class name on a mapped element
-const toggleSelected = (items, item) => {
-    items.map(item => {
-        item.classList.remove('selected');
-    })
-    item.classList.add('selected');
-}
-
-
-
-
 // FACTORY FUNCTION
 const photographerFactory = (portrait, name, city, country, tagline, price, tags) => {
 
@@ -60,11 +34,15 @@ const photographerFactory = (portrait, name, city, country, tagline, price, tags
     const getPrice = () => price;
     const getTags = () => tags;
 
+    // const tagString = getTags().join(' ');
+
     //Creating the main li container
     const photographer = document.createElement('li');
     photographer.classList.add('photographers__list-item');
     photographer.setAttribute('aria-labelledby', 'photographer');
+    // photographer.setAttribute('data-tags', tagString);
     photographer.setAttribute('tabIndex', "0");
+    
     photographers.appendChild(photographer);
 
     // function to create the elements
@@ -136,6 +114,32 @@ const photographerFactory = (portrait, name, city, country, tagline, price, tags
 }
 
 
+// GENERAL FUNCTIONs -------//
+// Function to render the data on the DOM using the Factory methods
+const dataRender = (data) => {
+    data.map( singlePhotographer => {
+        let {portrait, name, city, country, tagline, price, tags} = singlePhotographer;
+        let p = photographerFactory(portrait, name, city, country, tagline, price, tags);
+        p.createPortrait();
+        p.createName();
+        p.createOrigin();
+        p.createTagline();
+        p.createPrice();
+        p.createTags();
+        console.log(singlePhotographer);
+    })
+}
+
+// Function to toggle selected class name on a mapped element
+const toggleSelected = (items, item) => {
+    items.map(item => {
+        item.classList.remove('selected');
+    })
+    item.classList.add('selected');
+}
+
+
+
 
 //Loading the data promise and using it
 loadData().then( (data) => {
@@ -166,6 +170,8 @@ loadData().then( (data) => {
 
                 const tag = listItem.innerText.slice(1);
                 const filteredData = data.photographers.filter( d => d.tags.includes(tag));
+
+                console.log(filteredData)
 
                 toggleSelected(navListItems, listItem);
                 photographers.innerHTML = "";

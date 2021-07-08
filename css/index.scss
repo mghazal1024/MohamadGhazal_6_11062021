@@ -78,6 +78,9 @@ main {
                 }
             }
         }
+        &__list-item.show {
+            display: flex;
+        }
         &__portrait {
             width: 200px;
             height: 200px;
@@ -104,33 +107,6 @@ main {
     }
 }
 
-// main#photographer {
-//     display: flex;
-//     padding: 20px;
-//     .photographer__info {
-//         display: flex;
-//         flex-direction: column;
-//         align-items: flex-start;
-//         width: 100%;
-//         &-contact {
-//             display: flex;
-//             button {
-//                 position: fixed;
-//                 bottom: 50px;
-//                 left: 50%;
-//                 transform: translateX(-50%);
-//             }
-//         }
-//         .photographers__tags {
-//             justify-content: flex-start;
-//         }
-//     }
-//     .photographers__portrait {
-//         width: 100px;
-//         height: 100px;
-//         background-color: red;
-//     }
-// }
 
 main#photographer {
     display: grid;
@@ -231,6 +207,55 @@ main#photographer {
         .photographers__portrait {
             width: 200px;
             height: 200px;
+        }
+    }
+
+    .photographers__images {
+        display: flex;
+        flex-direction: column;
+        margin: 20px 40px;
+        .trier {
+            display: flex;
+        }
+        &-list {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            list-style: none;
+            flex-wrap: wrap;
+            margin-top: 60px;
+            li {
+                width: 350px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 30px;
+                .image {
+                    width: 100%;
+                    height: 300px;
+                    border-radius: 5px;
+                    overflow: hidden;
+                    margin-bottom: 10px;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+                .image__title {
+                    font-size: 1.5rem;
+                    line-height: 2rem;
+                }
+                .image__rating {
+                    display: flex;
+                    align-items: center;
+                    h4 {
+                        font-size: 1.5rem;
+                        line-height: 2rem;
+                    }
+                }
+            }
         }
     }
 }
