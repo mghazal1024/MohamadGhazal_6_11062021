@@ -18,8 +18,10 @@ const loadData = async () => {
 //DOM ELEMENTS
 // Main nav
 const mainNavList = document.querySelector('header nav ul');
-//Photographers 
+// Photographers 
 const photographers = document.querySelector('.photographers');
+
+
 
 
 
@@ -34,13 +36,13 @@ const photographerFactory = (portrait, name, city, country, tagline, price, tags
     const getPrice = () => price;
     const getTags = () => tags;
 
-    // const tagString = getTags().join(' ');
+    const tagString = getTags().join(' ');
 
     //Creating the main li container
     const photographer = document.createElement('li');
     photographer.classList.add('photographers__list-item');
     photographer.setAttribute('aria-labelledby', 'photographer');
-    // photographer.setAttribute('data-tags', tagString);
+    photographer.setAttribute('data-tags', tagString);
     photographer.setAttribute('tabIndex', "0");
     
     photographers.appendChild(photographer);
@@ -127,7 +129,6 @@ const dataRender = (data) => {
         p.createTagline();
         p.createPrice();
         p.createTags();
-        console.log(singlePhotographer);
     })
 }
 
@@ -140,56 +141,90 @@ const toggleSelected = (items, item) => {
 }
 
 
+//Adding an ALL tag to the main navigation
+const allTag = document.createElement('li')
+allTag.classList.add('selected');
+allTag.innerHTML = "#all";
+mainNavList.appendChild(allTag);
+
+//Creating the nav tag items
+const generalTags = ["portrait", "art", "fashion", "architecture", "travel", "sport", "animals", "events"];
+generalTags.map( generalTag => {
+    const tagItem = document.createElement('li');
+    tagItem.innerText = `#${generalTag}`;
+    tagItem.setAttribute('tabIndex', '0');
+
+    mainNavList.appendChild(tagItem);
+});
 
 
 //Loading the data promise and using it
 loadData().then( (data) => {
 
-    //Adding an ALL tag to the main navigation
-    const allTag = document.createElement('li')
-    allTag.classList.add('selected');
-    allTag.innerHTML = "#all";
-    mainNavList.appendChild(allTag);
+    //Initial Render
+    dataRender(data.photographers);
 
-    //Creating the nav tag items
-    const generalTags = ["portrait", "art", "fashion", "architecture", "travel", "sport", "animals", "events"];
-    generalTags.map( generalTag => {
-        const tagItem = document.createElement('li');
-        tagItem.innerText = `#${generalTag}`;
-        tagItem.setAttribute('tabIndex', '0');
-    
-        mainNavList.appendChild(tagItem);
-    });
-
-    //DOM Elements after loading
+    const taggedElements = [...document.querySelectorAll("[data-tags]")];
     const navListItems = [...document.querySelectorAll('nav ul li')];
 
-    // Adding click event listener to tag elements in the nav
-    navListItems.map(listItem => {
+    console.log(taggedElements)
+
+    navListItems.map( listItem => {
         listItem.addEventListener('click', () => {
-            if(listItem.innerText !== "#all") {
-
+            if (listItem.innerText !== "#all") {
+                
+                //Remove the # from the tags
                 const tag = listItem.innerText.slice(1);
-                const filteredData = data.photographers.filter( d => d.tags.includes(tag));
+                // create a new array with the element that contain the tag
+                const filteredData = taggedElements.filter( d => d.dataset.tags.includes(tag));
+                console.log(filteredData);
 
-                console.log(filteredData)
+                taggedElements.map( element => {
+                    element.style.display = "none";
+                })
 
-                toggleSelected(navListItems, listItem);
-                photographers.innerHTML = "";
-                dataRender(filteredData);
-
+                filteredData.map( filtered => {
+                    filtered.style.display = "flex";
+                })
             } else {
-
-                toggleSelected(navListItems, listItem);
-                photographers.innerHTML = "";
-                dataRender(data.photographers)
+                taggedElements.map( element => {
+                    element.style.display = "flex";
+                })
             }
         })
     })
 
-    //Initial Render
-    dataRender(data.photographers);
-
 });
 
+
+
+
+
+
+
+
+    // const navListItems = [...document.querySelectorAll('nav ul li')];
+
+
+    // // Adding click event listener to tag elements in the nav
+    // navListItems.map(listItem => {
+    //     listItem.addEventListener('click', () => {
+    //         if(listItem.innerText !== "#all") {
+
+    //             // Removing the # from the tags
+    //             const tag = listItem.innerText.slice(1);
+    //             // Creating a new array with the filtered data
+    //             const filteredData = data.photographers.filter( d => d.tags.includes(tag));
+
+    //             toggleSelected(navListItems, listItem);
+    //             photographers.innerHTML = "";
+    //             dataRender(filteredData);
+
+    //         } else {
+    //             toggleSelected(navListItems, listItem);
+    //             photographers.innerHTML = "";
+    //             dataRender(data.photographers)
+    //         }
+    //     })
+    // })
 
