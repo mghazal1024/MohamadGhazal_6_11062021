@@ -75,7 +75,7 @@ const photographerFactory = (portrait, name, city, country, tagline, price, tags
         pName.innerText = getName();
         pLink.appendChild(pName);
         photographer.appendChild(pLink);
-        photographers.appendChild(photographer);
+        // photographers.appendChild(photographer);
     }
 
     //Creating the city and country name
@@ -172,6 +172,12 @@ loadData().then( (data) => {
     navListItems.map( listItem => {
         listItem.addEventListener('click', () => {
             if (listItem.innerText !== "#all") {
+
+                navListItems.map( listItem => {
+                    listItem.classList.remove('selected');
+                })
+
+                listItem.classList.add('selected');
                 
                 //Remove the # from the tags
                 const tag = listItem.innerText.slice(1);
@@ -187,6 +193,13 @@ loadData().then( (data) => {
                     filtered.style.display = "flex";
                 })
             } else {
+                navListItems.map( listItem => {
+                    listItem.classList.remove('selected');
+                })
+
+                listItem.classList.add('selected');
+
+
                 taggedElements.map( element => {
                     element.style.display = "flex";
                 })
