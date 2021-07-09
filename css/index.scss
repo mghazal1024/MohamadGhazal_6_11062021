@@ -1,5 +1,6 @@
 @import 'base';
 
+
 header {
     width: 100%;
     display: flex;
@@ -8,7 +9,7 @@ header {
     padding: 40px 20px;
     flex-wrap: wrap;
     .logo-link {
-        max-width: 150px;
+        max-width:  150px;
         img {
             width: 100%;
             object-fit: cover;
@@ -29,32 +30,17 @@ header {
                     background-color: $primary-color;
                     color: white;
                 }
-                // &:hover {
-                //     background-color: $primary-color;
-                // }
-                // button {
-                //     @extend %tag-link;
-                //     transition: $basic-transition;
-                //     background: none;
-                //     border: none;
-                //     cursor: pointer;
-                    
-                // }
-                // &:hover {
-                //     button {
-                //         color: white;
-                //     }
-                // }
             }
             li.selected {
                 background-color: $primary-color;
                 color: white;
             }
-            
         }
     }
+    h2 {
+        color: $primary-color;
+    }
 }
-
 
 main {
     display: flex;
@@ -70,16 +56,13 @@ main {
             flex-direction: column;
             align-items: center;
             margin-bottom: 40px;
-            h2 {
+            a {
                 cursor: pointer;
-                transition: $basic-transition;
+                color: $secondary-color;
                 &:hover {
                     text-decoration: underline;
                 }
             }
-        }
-        &__list-item.show {
-            display: flex;
         }
         &__portrait {
             width: 200px;
@@ -108,44 +91,13 @@ main {
 }
 
 
-main#photographer {
-    display: grid;
-    grid-template-columns: 1fr 100px;
-    padding: 20px;
-    column-gap: 10px;
-    .photographer__info {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        &-contact {
-            h1 {
-                text-align: left;
-                color: $secondary-color;
-            }
-            button {
-                position: fixed;
-                bottom: 50px;
-                left: 50%;
-                transform: translateX(-50%);
-                background-color: $primary-color;
-                padding: 5px 20px;
-                border-radius: 5px;
-                border: 0;
-                color: white;
-            }
-        }
-        .photographers__tags {
-            justify-content: flex-start;
-        }
-    }
-    .photographers__portrait {
-        width: 100%;
-        height: 100px;
-    }
-}
+
+
+
 
 
 @media screen and (min-width: $desktop-break) {
+
     header {
         flex-wrap: nowrap;
         padding: 40px;
@@ -154,8 +106,8 @@ main#photographer {
         }
         nav {
             order: 0;
-            margin:  0 40px;
-        }
+            margin: 0 40px;
+        } 
     }
 
     main {
@@ -167,95 +119,5 @@ main#photographer {
             }
         }
     }
-
-    main#photographer {
-        background-color: #FAFAFA;
-        border-radius: 5px;
-        padding: 40px;
-        margin: 0 40px;
-        box-sizing: border-box;
-        grid-template-columns: 1fr 200px;
-        column-gap: 40px;
-        .photographer__info {
-            width: unset;
-            justify-content: center;
-            &-contact {
-                width: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: flex-start;
-                h1 {
-                    font-size: 4rem;
-                    line-height: 5.3rem;
-                }
-                button {
-                    position: unset;
-                    transform: unset;
-                    padding: 20px 10px;
-                    margin-left: 100px;
-                }
-            }
-            h4 {
-                font-size: 1.5rem;
-                line-height: 2rem;
-            }
-            p {
-                font-size: 1.125rem;
-                line-height: 1.6rem;
-            }
-        }
-        .photographers__portrait {
-            width: 200px;
-            height: 200px;
-        }
-    }
-
-    .photographers__images {
-        display: flex;
-        flex-direction: column;
-        margin: 20px 40px;
-        .trier {
-            display: flex;
-        }
-        &-list {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            list-style: none;
-            flex-wrap: wrap;
-            margin-top: 60px;
-            li {
-                width: 350px;
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: space-between;
-                align-items: center;
-                margin-bottom: 30px;
-                .image {
-                    width: 100%;
-                    height: 300px;
-                    border-radius: 5px;
-                    overflow: hidden;
-                    margin-bottom: 10px;
-                    img {
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                    }
-                }
-                .image__title {
-                    font-size: 1.5rem;
-                    line-height: 2rem;
-                }
-                .image__rating {
-                    display: flex;
-                    align-items: center;
-                    h4 {
-                        font-size: 1.5rem;
-                        line-height: 2rem;
-                    }
-                }
-            }
-        }
-    }
 }
+

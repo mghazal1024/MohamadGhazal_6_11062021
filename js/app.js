@@ -86,6 +86,7 @@ const photographerFactory = (portrait, name, city, country, tagline, price, tags
     //Creating the tagline
     const createTagline = () => {
         const pTagline = createElement('p');
+        pTagline.classList.add('p--small');
         pTagline.innerText = getTagline();
         photographer.appendChild(pTagline);
     }
@@ -93,7 +94,7 @@ const photographerFactory = (portrait, name, city, country, tagline, price, tags
     //Creating the price
     const createPrice = () => {
         const pPrice = createElement('p');
-        pPrice.classList.add('p--small', 'p--light-color');
+        pPrice.classList.add('p--small', 'p--light');
         pPrice.innerText = `${getPrice()}€/Jour`;
         photographer.appendChild(pPrice);
     }
