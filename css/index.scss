@@ -98,7 +98,21 @@ main {
 
 
 
-
+@media screen and (min-width: $tablet-break) {
+    header {
+        nav {
+            // justify-content: center;
+            width: 100%;
+        }
+    }
+    main {
+        .photographers {
+            &__list-item {
+                width: 50%;
+            }
+        }
+    }
+}
 
 
 
@@ -111,6 +125,7 @@ main {
             max-width: 200px;
         }
         nav {
+            width: unset;
             order: 0;
             margin: 0 40px;
         } 

@@ -205,7 +205,6 @@ loadData().then( (data) => {
 
                 listItem.classList.add('selected');
 
-
                 taggedElements.map( element => {
                     element.classList.add('show');
                 })

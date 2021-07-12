@@ -13,7 +13,9 @@ html {
     box-sizing: border-box;
 }
 
-$desktop-break: 680px;
+$tablet-break: 680px;
+$desktop-break: 1024px;
+
 
 $basic-transition: 200ms ease-in-out;
 
@@ -41,6 +43,7 @@ h1, h2, h3, h4, p {
     color: $primary-color;
 }
 h2 {
+    font-size: 0.875rem;
     color: $secondary-color;
 }
 h3, h4 {
@@ -87,49 +90,13 @@ p {
     color: $primary-color;
 }
 
-// %tag-link {
-//     font-family: $primary-font;
-//     font-size: 0.75rem;
-//     line-height: 0.75rem;
-//     font-weight: 500;
-//     color: $primary-color;
-// }
 
-// h1, h2, h4 {
-//     font-family: $primary-font;
-//     font-size: 0.9rem;
-//     line-height: 2.9rem;
-//     font-weight: 400;
-//     color: $primary-color;
-// }
-
-// h2 {
-//     color: $secondary-color;
-//     font-size: 2.25rem;
-//     text-align: center;
-// }
-
-// h4 {
-//     color: $primary-color;
-//     font-size: 0.8rem;
-//     line-height: 1rem;
-// }
-
-// p {
-//     font-family: $primary-font;
-//     font-size: 0.625rem;
-//     line-height: 1rem;
-//     color: $black;
-// }
-
-// .p--small {
-//     font-size: 0.56rem;
-// }
-// .p--light-color {
-//     color: $light;
-// }
-
-
+@media screen and (min-width: $tablet-break) {
+    h2 {
+        font-size: 1.6rem;
+        line-height: 2rem;
+    }
+}
 
 @media screen and (min-width:$desktop-break) {
 
@@ -137,6 +104,10 @@ p {
     h1 {
         font-size: 4rem;
         line-height: 5.25rem;
+    }
+    h2 {
+        font-size: 2.25rem;
+        line-height: 3rem;
     }
     h3 {
         font-size: 1.5rem;
