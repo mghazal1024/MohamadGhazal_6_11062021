@@ -1,5 +1,4 @@
 
-
 const loadData = async () => {
     try {
         const url = "/data.json";
@@ -16,6 +15,8 @@ const loadData = async () => {
 
 
 //DOM ELEMENTS
+// Main container
+const mainContainer = document.querySelector('.main-container')
 // Main nav
 const mainNavList = document.querySelector('header nav ul');
 // Photographers 
@@ -42,15 +43,14 @@ const photographerFactory = (portrait, name, city, country, tagline, price, tags
     const tagString = getTags().join(' ');
 
     //Creating the main li container
-    const photographer = document.createElement('li');
+
+    let photographer = document.createElement('li');
     photographer.classList.add('photographers__list-item');
     photographer.setAttribute('aria-labelledby', 'photographer');
     photographer.setAttribute('data-tags', tagString);
     photographer.setAttribute('tabIndex', "0");
     
     photographers.appendChild(photographer);
-    // photographer.appendChild(liFragment);
-    // ulFragment.appendChild(photographer);
 
     // function to create the elements
     const createElement = (type, className) => {
@@ -63,64 +63,65 @@ const photographerFactory = (portrait, name, city, country, tagline, price, tags
 
     //Creating the photographers portraits
     const createPortrait = () => {
-        const pPortraitContainer = createElement('div', 'photographers__portrait');
 
-        const pPortrait = createElement('img');
-        pPortrait.src = `/images/${getPortrait()}`;
+        let pPortraitContainer = 
+        "<div class='photographers__portrait'>\n\
+            <img src='/images/" + getPortrait() + "' alt='" + getName() + "' />\n\
+        </div>"
 
-        pPortraitContainer.appendChild(pPortrait);
-        photographer.appendChild(pPortraitContainer);
-        // liFragment.appendChild(pPortraitContainer);
+        photographer.innerHTML += pPortraitContainer;
+        return photographer
+
     }
 
     //Creating the photographers name that links to the page
     const createName = () => {
-        const pLink = createElement('a');
-        const pName = createElement('h2');
-
-        pName.innerText = getName();
-        pLink.appendChild(pName);
-        photographer.appendChild(pLink);
-        // liFragment.appendChild(pLink);
+        let pLink ="<a><h2>" + getName() + "</h2></a>"
+        photographer.innerHTML += pLink;
     }
 
     //Creating the city and country name
     const createOrigin = () => {
-        const pCity = createElement('h4');
-        pCity.innerText = `${getCity()}, ${getCountry()}`;
-        photographer.appendChild(pCity);
-        // liFragment.appendChild(pCity);
+        let pCity = "<h4>" + getCity() + ", " + getCountry() + "</h4>"
+        photographer.innerHTML += pCity;
     }
 
     //Creating the tagline
     const createTagline = () => {
-        const pTagline = createElement('p');
-        pTagline.classList.add('p--small');
-        pTagline.innerText = getTagline();
-        photographer.appendChild(pTagline);
-        // liFragment.appendChild(pTagline);
+
+        let pTagLine = "<p class='p--small'>" + getTagline() + "</p>"
+        photographer.innerHTML += pTagLine;
     }
 
     //Creating the price
     const createPrice = () => {
-        const pPrice = createElement('p');
-        pPrice.classList.add('p--small', 'p--light');
-        pPrice.innerText = `${getPrice()}€/Jour`;
-        photographer.appendChild(pPrice);
-        // liFragment.appendChild(pPrice);
+
+        let pPrice = "<p class='p--small p--light'>" + getPrice() + "€/Jour</p>"
+        photographer.innerHTML += pPrice;
     }
 
     //Creating the tags
+    // const createTags = () => {
+    //     const pTagsList = createElement('ul', 'photographers__tags');
+
+    //     getTags().map ( tag => {
+    //         const tagItem = createElement('li');
+    //         tagItem.innerText = `#${tag}`;
+    //         pTagsList.appendChild(tagItem);
+    //         photographer.appendChild(pTagsList);
+    //     })
+    // }
+
+    //Creating the tags
     const createTags = () => {
-        const pTagsList = createElement('ul', 'photographers__tags');
+        let pTagList = createElement('ul', 'photographers__tags');
 
         getTags().map ( tag => {
-            const tagItem = createElement('li');
-            tagItem.innerText = `#${tag}`;
-            pTagsList.appendChild(tagItem);
-            photographer.appendChild(pTagsList);
-            // liFragment.appendChild(pTagsList);
+            let tagItem = "<li>#" + tag + "</li>"
+            pTagList.innerHTML += tagItem;
         })
+
+        photographer.innerHTML += pTagList;
     }
 
     return {createPortrait, createName, createOrigin, createTagline, createPrice, createTags };
@@ -188,7 +189,7 @@ loadData().then( (data) => {
     const taggedElements = [...document.querySelectorAll("[data-tags]")];
     const navListItems = [...document.querySelectorAll('nav ul li')];
 
-    console.log(taggedElements)
+    // console.log(taggedElements)
 
     navListItems.map( listItem => {
         listItem.addEventListener('click', () => {
