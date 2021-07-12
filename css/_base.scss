@@ -54,12 +54,19 @@ p {
     color: $light;
 }
 .p--small {
+    font-size: 0.8rem;
+    line-height: 1.1rem;
+}
+.p--xsmall {
     font-size: 0.625rem;
     line-height: 1rem;
     color: black;
 }
 .p--light {
     color: $light;
+}
+.p--primary-color {
+    color: $primary-color;
 }
 
 

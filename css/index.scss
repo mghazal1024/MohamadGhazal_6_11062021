@@ -52,7 +52,7 @@ main {
         flex-wrap: wrap;
         &__list-item {
             width: 100%;
-            display: flex;
+            display: none;
             flex-direction: column;
             align-items: center;
             margin-bottom: 40px;
@@ -63,6 +63,9 @@ main {
                     text-decoration: underline;
                 }
             }
+        }
+        &__list-item.show {
+            display: flex;
         }
         &__portrait {
             width: 200px;
@@ -88,6 +91,9 @@ main {
             }
         }
     }
+    // .photographers__list-item.show {
+    //     display: flex;
+    // }
 }
 
 

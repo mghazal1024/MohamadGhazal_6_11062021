@@ -41,6 +41,11 @@ p {
 }
 
 .p--small {
+  font-size: 0.8rem;
+  line-height: 1.1rem;
+}
+
+.p--xsmall {
   font-size: 0.625rem;
   line-height: 1rem;
   color: black;
@@ -48,6 +53,10 @@ p {
 
 .p--light {
   color: #757575;
+}
+
+.p--primary-color {
+  color: #901C1C;
 }
 
 header nav ul li, main .photographers__tags li {
@@ -164,9 +173,7 @@ main .photographers {
 
 main .photographers__list-item {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -184,6 +191,12 @@ main .photographers__list-item a {
 
 main .photographers__list-item a:hover {
   text-decoration: underline;
+}
+
+main .photographers__list-item.show {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 main .photographers__portrait {

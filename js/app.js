@@ -19,11 +19,10 @@ const loadData = async () => {
 const mainContainer = document.querySelector('.main-container')
 // Main nav
 const mainNavList = document.querySelector('header nav ul');
+const mainNavFragment = document.createDocumentFragment();
 // Photographers 
 const photographers = document.querySelector('.photographers');
-
-// const liFragment = document.createDocumentFragment();
-// const ulFragment = document.createDocumentFragment();
+const photographerFragment = document.createDocumentFragment();
 
 
 
@@ -46,11 +45,13 @@ const photographerFactory = (portrait, name, city, country, tagline, price, tags
 
     let photographer = document.createElement('li');
     photographer.classList.add('photographers__list-item');
-    photographer.setAttribute('aria-labelledby', 'photographer');
+    photographer.classList.add('show')
+    photographer.setAttribute('aria-label', 'photographer');
     photographer.setAttribute('data-tags', tagString);
     photographer.setAttribute('tabIndex', "0");
     
-    photographers.appendChild(photographer);
+    // photographers.appendChild(photographer);
+    photographerFragment.appendChild(photographer);
 
     // function to create the elements
     const createElement = (type, className) => {
@@ -82,35 +83,24 @@ const photographerFactory = (portrait, name, city, country, tagline, price, tags
 
     //Creating the city and country name
     const createOrigin = () => {
-        let pCity = "<h4>" + getCity() + ", " + getCountry() + "</h4>"
+        let pCity = "<p class='p--small p--primary-color'>" + getCity() + ", " + getCountry() + "</p>"
         photographer.innerHTML += pCity;
     }
 
     //Creating the tagline
     const createTagline = () => {
 
-        let pTagLine = "<p class='p--small'>" + getTagline() + "</p>"
+        let pTagLine = "<p class='p--xsmall'>" + getTagline() + "</p>"
         photographer.innerHTML += pTagLine;
     }
 
     //Creating the price
     const createPrice = () => {
 
-        let pPrice = "<p class='p--small p--light'>" + getPrice() + "€/Jour</p>"
+        let pPrice = "<p class='p--xsmall p--light'>" + getPrice() + "€/Jour</p>"
         photographer.innerHTML += pPrice;
     }
 
-    //Creating the tags
-    // const createTags = () => {
-    //     const pTagsList = createElement('ul', 'photographers__tags');
-
-    //     getTags().map ( tag => {
-    //         const tagItem = createElement('li');
-    //         tagItem.innerText = `#${tag}`;
-    //         pTagsList.appendChild(tagItem);
-    //         photographer.appendChild(pTagsList);
-    //     })
-    // }
 
     //Creating the tags
     const createTags = () => {
@@ -120,8 +110,8 @@ const photographerFactory = (portrait, name, city, country, tagline, price, tags
             let tagItem = "<li>#" + tag + "</li>"
             pTagList.innerHTML += tagItem;
         })
+        photographer.appendChild(pTagList);
 
-        photographer.innerHTML += pTagList;
     }
 
     return {createPortrait, createName, createOrigin, createTagline, createPrice, createTags };
@@ -131,18 +121,8 @@ const photographerFactory = (portrait, name, city, country, tagline, price, tags
 // GENERAL FUNCTIONs -------//
 // Function to render the data on the DOM using the Factory methods
 const dataRender = (data) => {
-    // data.map( singlePhotographer => {
-    //     let {portrait, name, city, country, tagline, price, tags} = singlePhotographer;
-    //     let p = photographerFactory(portrait, name, city, country, tagline, price, tags);
-    //     p.createPortrait();
-    //     p.createName();
-    //     p.createOrigin();
-    //     p.createTagline();
-    //     p.createPrice();
-    //     p.createTags();
-    // })
-    for (let i = 0; i < data.length; i++) {
-        let {portrait, name, city, country, tagline, price, tags} = data[i];
+    data.map( singlePhotographer => {
+        let {portrait, name, city, country, tagline, price, tags} = singlePhotographer;
         let p = photographerFactory(portrait, name, city, country, tagline, price, tags);
         p.createPortrait();
         p.createName();
@@ -150,8 +130,8 @@ const dataRender = (data) => {
         p.createTagline();
         p.createPrice();
         p.createTags();
-    }
-    // photographers.appendChild(ulFragment);
+    })
+    photographers.appendChild(photographerFragment);
 }
 
 // Function to toggle selected class name on a mapped element
@@ -176,9 +156,11 @@ generalTags.map( generalTag => {
     tagItem.innerText = `#${generalTag}`;
     tagItem.setAttribute('tabIndex', '0');
 
-    mainNavList.appendChild(tagItem);
-});
+    mainNavFragment.appendChild(tagItem);
 
+    // mainNavList.appendChild(tagItem);
+});
+mainNavList.appendChild(mainNavFragment);
 
 //Loading the data promise and using it
 loadData().then( (data) => {
@@ -208,11 +190,13 @@ loadData().then( (data) => {
                 console.log(filteredData);
 
                 taggedElements.map( element => {
-                    element.style.display = "none";
+                    // element.style.display = "none";
+                    element.classList.remove('show');
                 })
 
                 filteredData.map( filtered => {
-                    filtered.style.display = "flex";
+                    // filtered.style.display = "flex";
+                    filtered.classList.add('show');
                 })
             } else {
                 navListItems.map( listItem => {
@@ -223,43 +207,10 @@ loadData().then( (data) => {
 
 
                 taggedElements.map( element => {
-                    element.style.display = "flex";
+                    element.classList.add('show');
                 })
             }
         })
     })
 
 });
-
-
-
-
-
-
-
-
-    // const navListItems = [...document.querySelectorAll('nav ul li')];
-
-
-    // // Adding click event listener to tag elements in the nav
-    // navListItems.map(listItem => {
-    //     listItem.addEventListener('click', () => {
-    //         if(listItem.innerText !== "#all") {
-
-    //             // Removing the # from the tags
-    //             const tag = listItem.innerText.slice(1);
-    //             // Creating a new array with the filtered data
-    //             const filteredData = data.photographers.filter( d => d.tags.includes(tag));
-
-    //             toggleSelected(navListItems, listItem);
-    //             photographers.innerHTML = "";
-    //             dataRender(filteredData);
-
-    //         } else {
-    //             toggleSelected(navListItems, listItem);
-    //             photographers.innerHTML = "";
-    //             dataRender(data.photographers)
-    //         }
-    //     })
-    // })
-
