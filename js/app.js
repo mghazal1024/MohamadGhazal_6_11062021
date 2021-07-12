@@ -21,6 +21,9 @@ const mainNavList = document.querySelector('header nav ul');
 // Photographers 
 const photographers = document.querySelector('.photographers');
 
+// const liFragment = document.createDocumentFragment();
+// const ulFragment = document.createDocumentFragment();
+
 
 
 
@@ -46,6 +49,8 @@ const photographerFactory = (portrait, name, city, country, tagline, price, tags
     photographer.setAttribute('tabIndex', "0");
     
     photographers.appendChild(photographer);
+    // photographer.appendChild(liFragment);
+    // ulFragment.appendChild(photographer);
 
     // function to create the elements
     const createElement = (type, className) => {
@@ -65,6 +70,7 @@ const photographerFactory = (portrait, name, city, country, tagline, price, tags
 
         pPortraitContainer.appendChild(pPortrait);
         photographer.appendChild(pPortraitContainer);
+        // liFragment.appendChild(pPortraitContainer);
     }
 
     //Creating the photographers name that links to the page
@@ -75,7 +81,7 @@ const photographerFactory = (portrait, name, city, country, tagline, price, tags
         pName.innerText = getName();
         pLink.appendChild(pName);
         photographer.appendChild(pLink);
-        // photographers.appendChild(photographer);
+        // liFragment.appendChild(pLink);
     }
 
     //Creating the city and country name
@@ -83,6 +89,7 @@ const photographerFactory = (portrait, name, city, country, tagline, price, tags
         const pCity = createElement('h4');
         pCity.innerText = `${getCity()}, ${getCountry()}`;
         photographer.appendChild(pCity);
+        // liFragment.appendChild(pCity);
     }
 
     //Creating the tagline
@@ -91,6 +98,7 @@ const photographerFactory = (portrait, name, city, country, tagline, price, tags
         pTagline.classList.add('p--small');
         pTagline.innerText = getTagline();
         photographer.appendChild(pTagline);
+        // liFragment.appendChild(pTagline);
     }
 
     //Creating the price
@@ -99,6 +107,7 @@ const photographerFactory = (portrait, name, city, country, tagline, price, tags
         pPrice.classList.add('p--small', 'p--light');
         pPrice.innerText = `${getPrice()}€/Jour`;
         photographer.appendChild(pPrice);
+        // liFragment.appendChild(pPrice);
     }
 
     //Creating the tags
@@ -110,6 +119,7 @@ const photographerFactory = (portrait, name, city, country, tagline, price, tags
             tagItem.innerText = `#${tag}`;
             pTagsList.appendChild(tagItem);
             photographer.appendChild(pTagsList);
+            // liFragment.appendChild(pTagsList);
         })
     }
 
@@ -120,8 +130,18 @@ const photographerFactory = (portrait, name, city, country, tagline, price, tags
 // GENERAL FUNCTIONs -------//
 // Function to render the data on the DOM using the Factory methods
 const dataRender = (data) => {
-    data.map( singlePhotographer => {
-        let {portrait, name, city, country, tagline, price, tags} = singlePhotographer;
+    // data.map( singlePhotographer => {
+    //     let {portrait, name, city, country, tagline, price, tags} = singlePhotographer;
+    //     let p = photographerFactory(portrait, name, city, country, tagline, price, tags);
+    //     p.createPortrait();
+    //     p.createName();
+    //     p.createOrigin();
+    //     p.createTagline();
+    //     p.createPrice();
+    //     p.createTags();
+    // })
+    for (let i = 0; i < data.length; i++) {
+        let {portrait, name, city, country, tagline, price, tags} = data[i];
         let p = photographerFactory(portrait, name, city, country, tagline, price, tags);
         p.createPortrait();
         p.createName();
@@ -129,7 +149,8 @@ const dataRender = (data) => {
         p.createTagline();
         p.createPrice();
         p.createTags();
-    })
+    }
+    // photographers.appendChild(ulFragment);
 }
 
 // Function to toggle selected class name on a mapped element
