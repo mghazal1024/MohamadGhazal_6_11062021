@@ -13,20 +13,20 @@ const loadData = async () => {
 
 
 
-
 //DOM ELEMENTS
 // Main container
 const mainContainer = document.querySelector('.main-container')
 // Main nav
+const logo = document.querySelector('.logo-link');
 const mainNavList = document.querySelector('header nav ul');
 const mainNavFragment = document.createDocumentFragment();
 // Photographers 
 const photographers = document.querySelector('.photographers');
 const photographerFragment = document.createDocumentFragment();
 
-
-
-
+// logo.addEventListener('click', () => {
+//     mainContainer.appendChild(photographers)
+// }
 
 // FACTORY FUNCTION
 const photographerFactory = (portrait, name, city, country, tagline, price, tags) => {
@@ -77,7 +77,8 @@ const photographerFactory = (portrait, name, city, country, tagline, price, tags
 
     //Creating the photographers name that links to the page
     const createName = () => {
-        let pLink ="<a><h2>" + getName() + "</h2></a>"
+        // let pLink ="<a><h2>" + getName() + "</h2></a>"
+        let pLink = "<button class='name-link'><h2>" + getName() + "</h2></button>"
         photographer.innerHTML += pLink;
     }
 
@@ -132,6 +133,7 @@ const dataRender = (data) => {
         p.createTags();
     })
     photographers.appendChild(photographerFragment);
+    // mainContainer.appendChild(photographers);
 }
 
 // Function to toggle selected class name on a mapped element
@@ -165,11 +167,30 @@ mainNavList.appendChild(mainNavFragment);
 //Loading the data promise and using it
 loadData().then( (data) => {
 
+    logo.addEventListener('click', () => {
+        mainContainer.innerHTML = "";
+        mainContainer.appendChild(photographers);
+        headerNav.style.display = "flex";
+        headerH2.style.display = "flex";
+    });
+
     //Initial Render
     dataRender(data.photographers);
 
     const taggedElements = [...document.querySelectorAll("[data-tags]")];
     const navListItems = [...document.querySelectorAll('nav ul li')];
+    const nameLinks = [...document.querySelectorAll('.name-link')];
+    const headerNav = document.querySelector('header nav');
+    const headerH2 = document.querySelector('header h2');
+
+    nameLinks.map( link => {
+        link.addEventListener('click', () => {
+            mainContainer.innerHTML = link.innerHTML;
+            headerNav.style.display = "none";
+            headerH2.style.display = "none";
+        })
+    })
+    
 
     // console.log(taggedElements)
 

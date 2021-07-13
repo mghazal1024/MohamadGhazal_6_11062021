@@ -121,6 +121,9 @@ header {
 
 header .logo-link {
   max-width: 150px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 header .logo-link img {
@@ -226,6 +229,15 @@ main .photographers__portrait img {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+main .photographers .name-link {
+  background-color: transparent;
+  border: none;
+}
+
+main .photographers .name-link:hover h2 {
+  text-decoration: underline;
 }
 
 main .photographers__tags {

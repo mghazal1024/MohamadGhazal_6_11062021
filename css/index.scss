@@ -10,6 +10,9 @@ header {
     flex-wrap: wrap;
     .logo-link {
         max-width:  150px;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
         img {
             width: 100%;
             object-fit: cover;
@@ -78,6 +81,13 @@ main {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
+            }
+        }
+        .name-link {
+            background-color: transparent;
+            border: none;
+            &:hover h2{
+                text-decoration: underline;
             }
         }
         &__tags {
