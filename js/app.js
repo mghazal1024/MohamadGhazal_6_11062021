@@ -122,6 +122,79 @@ const photographerFactory = (portrait, name, city, country, tagline, price, tags
     return {createPortrait, createName, createOrigin, createTagline, createPrice, createTags };
 }
 
+// To Create the Photographer section
+const photographerPageSection = (portrait, name, city, country, tagline, tags, images) => {
+    const getPortrait = () => portrait;
+    const getName = () => name;
+    const getCity = () => city;
+    const getCountry = () => country;
+    const getTagline = () => tagline;
+    const getPrice = () => price;
+    const getTags = () => tags;
+    const getImages = () => images;
+
+    
+
+    const createSection = () => {
+        let pSection = document.createElement('section');
+        pSection.classList.add('photographer');
+
+        let tags = getTags().map( tag => {
+            return `<li>${tag}</li>`
+        })
+
+        let pInfo = `
+            <div class="photographer__info">
+                <div class="photographer__info-contact">
+                    <h1>${getName()}</h1>
+                    <button>Contactez-moi</button>
+                </div>
+                <h4>${getCity()}, ${getCountry()}</h4>
+                <p>${getTagline()}</p>
+                <ul class="photographer__tags">
+                    ${tags.join(" ")}
+                </ul>
+            </div>
+            <div class="photographer__portrait">
+                <img src="/images/${getPortrait()}" alt=${getName()}/>
+            </div>
+        `
+        pSection.innerHTML += pInfo;
+        photographerSectionFragment.appendChild(pSection);
+        // return pSection;
+
+    }
+
+    const createPhotosList = () => {
+        let pImages = document.createElement('section');
+        pImages.classList.add('photographer__images');
+
+        let imagesLi = getImages().map( image => {
+            return `<li>
+                <div class="image">
+                    <img src="./images/Mimi/${image.image}" atl=${image.title} />
+                </div>
+            </li>`
+        })
+
+        let pImagesSection = `
+                <ul class="photographer__images-list">
+                    ${imagesLi.join(" ")}
+                </ul>
+        `
+
+        pImages.innerHTML += pImagesSection;
+        photographerSectionFragment.appendChild(pImages);
+        console.log(pImagesSection)
+    }
+
+    return { createSection, createPhotosList };
+
+}
+
+
+
+
 
 
 
@@ -153,7 +226,6 @@ const toggleSelected = (items, item) => {
     })
     item.classList.add('selected');
 }
-
 
 
 
@@ -199,9 +271,33 @@ loadData().then( (data) => {
     const headerNav = document.querySelector('header nav');
     const headerH2 = document.querySelector('header h2');
 
+
     nameLinks.map( link => {
         link.addEventListener('click', () => {
-            mainContainer.innerHTML = link.innerHTML;
+
+            let singlePhotographer = data.photographers.find((photographer) => {
+                if(photographer.name === link.innerText)
+                return true;
+            })
+
+            let pImages = data.media.filter(( image ) => {
+                if(image.photographerId === singlePhotographer.id)
+                return true;
+            })
+
+            console.log(singlePhotographer);
+            console.log(pImages)
+
+            let {portrait, name, city, country, tagline, tags} = singlePhotographer
+
+
+            let pSectionPage = photographerPageSection(portrait, name, city, country, tagline, tags, pImages);
+            let pSection = pSectionPage.createSection();
+            let pImagesSection = pSectionPage.createPhotosList();
+
+            mainContainer.innerHTML = "";
+            // mainContainer.appendChild(pSection);
+            mainContainer.appendChild(photographerSectionFragment);
             headerNav.style.display = "none";
             headerH2.style.display = "none";
         })
