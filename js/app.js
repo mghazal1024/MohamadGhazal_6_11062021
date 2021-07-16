@@ -133,6 +133,8 @@ const photographerPageSection = (portrait, name, city, country, tagline, tags, i
     const getTags = () => tags;
     const getImages = () => images;
 
+    const nameArray = getName().split(" " || "-");
+
     
 
     const createSection = () => {
@@ -172,7 +174,7 @@ const photographerPageSection = (portrait, name, city, country, tagline, tags, i
         let imagesLi = getImages().map( image => {
             return `<li>
                 <div class="image">
-                    <img src="./images/Mimi/${image.image}" atl=${image.title} />
+                    <img src="./images/${nameArray[0]}/${image.image}" atl=${image.title} />
                 </div>
             </li>`
         })
