@@ -60,6 +60,16 @@ p {
   color: #901C1C;
 }
 
+main .photographers__tags {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 5px;
+}
+
 header nav ul li, main .photographers__tags li {
   height: 22px;
   border: 1px solid #C4C4C4;
@@ -173,7 +183,11 @@ main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 40px;
+  padding: 0 20px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 main .photographers {
@@ -184,6 +198,7 @@ main .photographers {
   list-style: none;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  padding: 40px 0;
 }
 
 main .photographers__list-item {
@@ -241,21 +256,17 @@ main .photographers .name-link:hover h2 {
 }
 
 main .photographers__tags {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  list-style: none;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  margin-top: 5px;
 }
 
 @media screen and (min-width: 680px) {
   header nav {
     width: 100%;
+  }
+  main {
+    padding: 0 30px;
   }
   main .photographers__list-item {
     width: 50%;
@@ -279,9 +290,10 @@ main .photographers__tags {
     margin: 0 40px;
   }
   main {
-    padding: 100px 40px;
+    padding: 0 40px;
   }
   main .photographers {
+    padding: 100px 40px;
     -webkit-box-pack: space-evenly;
         -ms-flex-pack: space-evenly;
             justify-content: space-evenly;

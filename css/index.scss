@@ -47,12 +47,15 @@ header {
 
 main {
     display: flex;
-    padding: 40px;
+    // padding: 40px;
+    padding: 0 20px;
+    flex-direction: column;
     .photographers {
         display: flex;
         width: 100%;
         list-style: none;
         flex-wrap: wrap;
+        padding: 40px 0;
         &__list-item {
             width: 100%;
             display: none;
@@ -91,11 +94,13 @@ main {
             }
         }
         &__tags {
-            display: flex;
-            list-style: none;
+            // display: flex;
+            // list-style: none;
+            // justify-content: center;
+            // flex-wrap: wrap;
+            // margin-top: 5px;
+            @extend %tag-ul;
             justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 5px;
             li {
                 @extend %tag-list-item;
             }
@@ -116,6 +121,7 @@ main {
         }
     }
     main {
+        padding: 0 30px;
         .photographers {
             &__list-item {
                 width: 50%;
@@ -142,8 +148,10 @@ main {
     }
 
     main {
-        padding: 100px 40px;
+        // padding: 100px 40px;
+        padding: 0 40px;
         .photographers {
+            padding: 100px 40px;
             justify-content: space-evenly;
             &__list-item {
                 width: 30%;

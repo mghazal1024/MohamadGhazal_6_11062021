@@ -73,6 +73,13 @@ p {
 }
 
 
+%tag-ul {
+    display: flex;
+    list-style: none;
+    // justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 5px;
+}
 
 %tag-list-item {
     height: 22px;

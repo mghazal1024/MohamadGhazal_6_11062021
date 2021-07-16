@@ -24,11 +24,16 @@ const mainNavFragment = document.createDocumentFragment();
 const photographers = document.querySelector('.photographers');
 const photographerFragment = document.createDocumentFragment();
 
-// logo.addEventListener('click', () => {
-//     mainContainer.appendChild(photographers)
-// }
+// Photographer Section
+const photographerSectionFragment = document.createDocumentFragment();
 
-// FACTORY FUNCTION
+
+
+
+
+
+// FACTORY FUNCTIONS
+// for photographers list in homepage
 const photographerFactory = (portrait, name, city, country, tagline, price, tags) => {
 
     const getPortrait = () => portrait;
@@ -42,7 +47,6 @@ const photographerFactory = (portrait, name, city, country, tagline, price, tags
     const tagString = getTags().join(' ');
 
     //Creating the main li container
-
     let photographer = document.createElement('li');
     photographer.classList.add('photographers__list-item');
     photographer.classList.add('show')
@@ -119,7 +123,11 @@ const photographerFactory = (portrait, name, city, country, tagline, price, tags
 }
 
 
+
+
+
 // GENERAL FUNCTIONs -------//
+
 // Function to render the data on the DOM using the Factory methods
 const dataRender = (data) => {
     data.map( singlePhotographer => {
@@ -136,6 +144,8 @@ const dataRender = (data) => {
     // mainContainer.appendChild(photographers);
 }
 
+
+
 // Function to toggle selected class name on a mapped element
 const toggleSelected = (items, item) => {
     items.map(item => {
@@ -143,6 +153,9 @@ const toggleSelected = (items, item) => {
     })
     item.classList.add('selected');
 }
+
+
+
 
 
 //Adding an ALL tag to the main navigation
@@ -159,10 +172,13 @@ generalTags.map( generalTag => {
     tagItem.setAttribute('tabIndex', '0');
 
     mainNavFragment.appendChild(tagItem);
-
-    // mainNavList.appendChild(tagItem);
 });
 mainNavList.appendChild(mainNavFragment);
+
+
+
+
+
 
 //Loading the data promise and using it
 loadData().then( (data) => {
@@ -211,12 +227,10 @@ loadData().then( (data) => {
                 console.log(filteredData);
 
                 taggedElements.map( element => {
-                    // element.style.display = "none";
                     element.classList.remove('show');
                 })
 
                 filteredData.map( filtered => {
-                    // filtered.style.display = "flex";
                     filtered.classList.add('show');
                 })
             } else {
@@ -234,3 +248,5 @@ loadData().then( (data) => {
     })
 
 });
+
+
