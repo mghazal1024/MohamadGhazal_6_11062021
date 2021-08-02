@@ -13,6 +13,7 @@ const loadData = async () => {
 
 // DOM Elements
 const mainContainer = document.querySelector('.main-container');
+const mainNavList = document.querySelector('header nav ul');
 
 // FACTORY FUNCTION
 const photographerFactory = (photographers) => {
@@ -50,6 +51,7 @@ const photographerFactory = (photographers) => {
                 ${pCards.join(' ')}
             </ul>
         `
+        mainContainer.innerHTML = "";
         mainContainer.innerHTML = pCardList;
     }
 
@@ -58,8 +60,16 @@ const photographerFactory = (photographers) => {
 }
 
 
+
+
+
+
+
+
+
 // Loading the data promise and using it
 loadData().then( (data) => {
+
 
     let p = photographerFactory(data.photographers);
     p.createPCardList();
