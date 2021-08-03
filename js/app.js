@@ -90,9 +90,50 @@ mainNavList.appendChild(mainNavFragment);
 // Loading the data promise and using it
 loadData().then( (data) => {
 
-
     let p = photographerFactory(data.photographers);
     p.createPCardList();
+    
+    const taggedElements = [...document.querySelectorAll('[data-tags]')];
+    const navListItems = [...document.querySelectorAll('nav ul li')];
+
+    // Filtering photographers
+    navListItems.map( listItem => {
+        listItem.addEventListener('click', () => {
+            if(listItem.innerText !== "#all") {
+                navListItems.map( listItem => {
+                    listItem.classList.remove('selected');
+                })
+                listItem.classList.add('selected');
+
+                //Remove the # from the tags
+                const tag = listItem.innerText.slice(1);
+                // Create a new array with the element that contain the tag
+                const filteredData = taggedElements.filter( d => d.dataset.tags.includes(tag));
+                console.log(filteredData);
+
+                taggedElements.map( element => {
+                    element.classList.remove('show');
+                })
+
+                filteredData.map( filtered => {
+                    filtered.classList.add('show');
+                })
+            } else {
+                navListItems.map( listItem => {
+                    listItem.classList.remove('selected');
+                })
+
+                listItem.classList.add('selected');
+
+                taggedElements.map( element => {
+                    element.classList.add('show');
+                })
+            }
+        })
+    })
+
+
+
 
 
 })
