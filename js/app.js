@@ -26,10 +26,12 @@ const photographerFactory = (photographers) => {
             return `<li>${tag}</li>`
         })
 
+        const tagString = tags.join(' ');
+
         console.log(pTags)
 
         let pCard = `
-            <li class='photographers__list-item show'>
+            <li class='photographers__list-item show' aria-label='photographer' data-tags='${tagString}' tabIndex='0'>
                 <div class='photographers__portrait'>
                     <img src='/images/${portrait}' alt=${pName} />
                 </div>
