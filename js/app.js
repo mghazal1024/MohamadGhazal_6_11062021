@@ -14,6 +14,7 @@ const loadData = async () => {
 // DOM Elements
 const mainContainer = document.querySelector('.main-container');
 const mainNavList = document.querySelector('header nav ul');
+const mainNavFragment = document.createDocumentFragment();
 
 // FACTORY FUNCTION
 const photographerFactory = (photographers) => {
@@ -24,6 +25,8 @@ const photographerFactory = (photographers) => {
         let pTags = tags.map( tag => {
             return `<li>${tag}</li>`
         })
+
+        console.log(pTags)
 
         let pCard = `
             <li class='photographers__list-item show'>
@@ -62,7 +65,22 @@ const photographerFactory = (photographers) => {
 
 
 
+//Adding an ALL tag to the main navigation
+const allTag = document.createElement('li')
+allTag.classList.add('selected');
+allTag.innerHTML = "#all";
+mainNavList.appendChild(allTag);
 
+//Creating the nav tag items
+const generalTags = ["portrait", "art", "fashion", "architecture", "travel", "sport", "animals", "events"];
+generalTags.map( generalTag => {
+    const tagItem = document.createElement('li');
+    tagItem.innerText = `#${generalTag}`;
+    tagItem.setAttribute('tabIndex', '0');
+
+    mainNavFragment.appendChild(tagItem);
+});
+mainNavList.appendChild(mainNavFragment);
 
 
 
