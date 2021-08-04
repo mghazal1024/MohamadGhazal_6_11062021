@@ -60,6 +60,10 @@ p {
   color: #901C1C;
 }
 
+.primary-color {
+  color: #901C1C;
+}
+
 main .photographers__tags {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -217,6 +221,7 @@ main .photographers__list-item {
 main .photographers__list-item a {
   cursor: pointer;
   color: #D3573C;
+  text-decoration: none;
 }
 
 main .photographers__list-item a:hover {
