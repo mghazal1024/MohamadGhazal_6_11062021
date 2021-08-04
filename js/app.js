@@ -1,25 +1,19 @@
-
-// Load data
-const loadData = async () => {
-    try {
-        const url = "/data.json";
-        const result = await fetch(url);
-        const data = await result.json(); 
-        return data;
-    } catch (err) {
-        console.error(err);
-    }
-}
+// Load Data
+import LoadData from "./Api.js";
 
 // DOM Elements
+const logo = document.querySelector('.logo-link');
 const mainContainer = document.querySelector('.main-container');
 const mainNavList = document.querySelector('header nav ul');
 const mainNavFragment = document.createDocumentFragment();
+const photographerSectionFragment = document.createDocumentFragment();
+
+
 
 // FACTORY FUNCTION
 const photographerFactory = (photographers) => {
 
-
+    // Create Photographer card for Homepage
     const createPCard = (portrait, pName, city, country, tagline, tags) => {
 
         let pTags = tags.map( tag => {
@@ -27,8 +21,6 @@ const photographerFactory = (photographers) => {
         })
 
         const tagString = tags.join(' ');
-
-        console.log(pTags)
 
         let pCard = `
             <li class='photographers__list-item show' aria-label='photographer' data-tags='${tagString}' tabIndex='0'>
@@ -46,6 +38,7 @@ const photographerFactory = (photographers) => {
         return pCard;
     }
 
+    // Create Photographer card list for homepage
     const createPCardList = () => {
 
         let pCards = photographers.map( p => {
@@ -60,13 +53,44 @@ const photographerFactory = (photographers) => {
         mainContainer.innerHTML = pCardList;
     }
 
-    return { createPCardList };
+    // Create Photographer info section in photographer page
+    const createPInfoSection = (portrait, pName, city, country, tagline, tags) => {
+
+        let pSection = document.createElement('section');
+        pSection.classList.add('photographer');
+
+        let allTags = tags.map( tag => {
+            return `<li>${tag}</li>`
+        })
+
+        let pInfo = `
+            <div class="photographer__info">
+                <div class="photographer__info-contact">
+                    <h1>${pName}</h1>
+                    <button>Contactez-moi</button>
+                </div>
+                <h4>${city}, ${country}</h4>
+                <p>${tagline}</p>
+                <ul class="photographer__tags>
+                    ${allTags.join(" ")}
+                </ul>
+            </div>
+            <div class="photographer__portrait">
+                <img src="/images/${portrait}" alt=${pName} />
+            </div>
+        `
+
+        pSection.innerHTML += pInfo;
+        photographerSectionFragment.appendChild(pSection)
+
+    }
+
+    return { createPCardList, createPInfoSection };
 
 }
 
 
-
-
+//HEADER SECTION ELEMENTS
 //Adding an ALL tag to the main navigation
 const allTag = document.createElement('li')
 allTag.classList.add('selected');
@@ -87,14 +111,17 @@ mainNavList.appendChild(mainNavFragment);
 
 
 
+// PROMISE
 // Loading the data promise and using it
-loadData().then( (data) => {
+LoadData().then( (data) => {
 
+    // Initial Render
     let p = photographerFactory(data.photographers);
     p.createPCardList();
-    
+
     const taggedElements = [...document.querySelectorAll('[data-tags]')];
     const navListItems = [...document.querySelectorAll('nav ul li')];
+    const nameLinks = [...document.querySelectorAll('.name-link')];
 
     // Filtering photographers
     navListItems.map( listItem => {
@@ -109,7 +136,6 @@ loadData().then( (data) => {
                 const tag = listItem.innerText.slice(1);
                 // Create a new array with the element that contain the tag
                 const filteredData = taggedElements.filter( d => d.dataset.tags.includes(tag));
-                console.log(filteredData);
 
                 taggedElements.map( element => {
                     element.classList.remove('show');
@@ -133,6 +159,13 @@ loadData().then( (data) => {
     })
 
 
+    // Changing the content fo main container after name link is clicked
+    nameLinks.map( link => {
+        link.addEventListener('click', () => {
+            console.log(mainContainer)
+            mainContainer.innerHTML = "";
+        })
+    })
 
 
 
