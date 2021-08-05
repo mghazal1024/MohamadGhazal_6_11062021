@@ -23,6 +23,7 @@ import PhotographerPage from './Helpers/PhotographerPage.js';
 LoadData().then( (data) => {
     if (window.location.pathname.includes("/photographer.html")) {
         console.log('this is a photographer page');
+        console.log(window.location.search)
         let p = PhotographerPage(data.photographers);
         p.createInfoSection();
     } else {
