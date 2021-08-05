@@ -38,7 +38,16 @@ const PhotographerPage = (data) => {
     const createImagesSection = () => {
 
         let pGalleryItems = media.map( item => {
-            let mediaItem = `
+            // let mediaItem = `
+            //     <li>
+            //         <div class="image">
+            //             <img src="./images/${name.split(' ')[0]}/${item.image}" alt=${item.title}/>>
+            //         </div>
+            //     </li>
+            // `
+            // return mediaItem;
+            if(item.image) {
+                let mediaItem = `
                 <li>
                     <div class="image">
                         <img src="./images/${name.split(' ')[0]}/${item.image}" alt=${item.title}/>>
@@ -46,6 +55,16 @@ const PhotographerPage = (data) => {
                 </li>
             `
             return mediaItem;
+            } else if (item.video) {
+                let mediaItem = `
+                <li>
+                    <div class="image">
+                        <video controls="controls" src="./images/${name.split(' ')[0]}/${item.video}"></video>
+                    </div>
+                </li>
+            `
+            return mediaItem;
+            }
         })
 
         let gallerySection = `
