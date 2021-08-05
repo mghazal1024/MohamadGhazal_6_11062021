@@ -6,7 +6,7 @@ const mainContainer = document.querySelector('.main-container');
 const PhotographerFactory = (photographers) => {
 
     // Create Photographer card for Homepage
-    const createPCard = (portrait, pName, city, country, tagline, tags) => {
+    const createPCard = (portrait, pName, city, country, tagline, tags, id) => {
 
         let pTags = tags.map( tag => {
             return `<li>${tag}</li>`
@@ -19,7 +19,7 @@ const PhotographerFactory = (photographers) => {
                 <div class='photographers__portrait'>
                     <img src='/images/${portrait}' alt=${pName} />
                 </div>
-                <button class='name-link'><h2>${pName}</h2></button>
+                <a href="photographer.html?id=${id}" class='name-link'><h2>${pName}</h2></a>
                 <p class='p--small p--primary-color'>${city}, ${country}</p>
                 <p class='p--xsmall'>${tagline}</p>
                 <ul class='photographers__tags'>
@@ -34,7 +34,7 @@ const PhotographerFactory = (photographers) => {
     const createPCardList = () => {
 
         let pCards = photographers.map( p => {
-            return createPCard(p.portrait, p.name, p.city, p.country, p.tagline, p.tags);
+            return createPCard(p.portrait, p.name, p.city, p.country, p.tagline, p.tags, p.id);
         })
         let pCardList = `
             <ul class="photographers">
@@ -46,38 +46,38 @@ const PhotographerFactory = (photographers) => {
     }
 
     // Create Photographer info section in photographer page
-    const createPInfoSection = (portrait, pName, city, country, tagline, tags) => {
+    // const createPInfoSection = (portrait, pName, city, country, tagline, tags) => {
 
-        let pSection = document.createElement('section');
-        pSection.classList.add('photographer');
+    //     let pSection = document.createElement('section');
+    //     pSection.classList.add('photographer');
 
-        let allTags = tags.map( tag => {
-            return `<li>${tag}</li>`
-        })
+    //     let allTags = tags.map( tag => {
+    //         return `<li>${tag}</li>`
+    //     })
 
-        let pInfo = `
-            <div class="photographer__info">
-                <div class="photographer__info-contact">
-                    <h1>${pName}</h1>
-                    <button>Contactez-moi</button>
-                </div>
-                <h4>${city}, ${country}</h4>
-                <p>${tagline}</p>
-                <ul class="photographer__tags>
-                    ${allTags.join(" ")}
-                </ul>
-            </div>
-            <div class="photographer__portrait">
-                <img src="/images/${portrait}" alt=${pName} />
-            </div>
-        `
+    //     let pInfo = `
+    //         <div class="photographer__info">
+    //             <div class="photographer__info-contact">
+    //                 <h1>${pName}</h1>
+    //                 <button>Contactez-moi</button>
+    //             </div>
+    //             <h4>${city}, ${country}</h4>
+    //             <p>${tagline}</p>
+    //             <ul class="photographer__tags>
+    //                 ${allTags.join(" ")}
+    //             </ul>
+    //         </div>
+    //         <div class="photographer__portrait">
+    //             <img src="/images/${portrait}" alt=${pName} />
+    //         </div>
+    //     `
 
-        pSection.innerHTML += pInfo;
-        photographerSectionFragment.appendChild(pSection)
+    //     pSection.innerHTML += pInfo;
+    //     photographerSectionFragment.appendChild(pSection)
 
-    }
+    // }
 
-    return { createPCardList, createPInfoSection };
+    return { createPCardList };
 
 }
 

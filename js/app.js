@@ -3,10 +3,20 @@ import LoadData from './Api.js';
 
 //Adding header tags
 import HeaderTags from './Components/HeaderTags.js';
-HeaderTags();
+import PhotographerFactory from './Helpers/PhotographerFactory.js';
+import MainNavFilter from './Helpers/MainNavFilter.js';
+
 
 LoadData().then( (data) => {
-    console.log(data);
+    HeaderTags();
+
+    let p = PhotographerFactory(data.photographers);
+    p.createPCardList();
+
+    const navListItems = [...document.querySelectorAll('nav ul li')];
+    const taggedElements = [...document.querySelectorAll("[data-tags]")];
+    MainNavFilter(navListItems, taggedElements);
+    
 })
 
 
