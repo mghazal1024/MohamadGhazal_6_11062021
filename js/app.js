@@ -24,8 +24,9 @@ LoadData().then( (data) => {
     if (window.location.pathname.includes("/photographer.html")) {
         console.log('this is a photographer page');
         console.log(window.location.search)
-        let p = PhotographerPage(data.photographers);
+        let p = PhotographerPage(data);
         p.createInfoSection();
+        p.createImagesSection();
     } else {
         HeaderTags();
 
