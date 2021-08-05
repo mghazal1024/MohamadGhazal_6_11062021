@@ -5,18 +5,36 @@ import LoadData from './Api.js';
 import HeaderTags from './Components/HeaderTags.js';
 import PhotographerFactory from './Helpers/PhotographerFactory.js';
 import MainNavFilter from './Helpers/MainNavFilter.js';
+import PhotographerPage from './Helpers/PhotographerPage.js';
 
+
+// LoadData().then( (data) => {
+//     HeaderTags();
+
+//     let p = PhotographerFactory(data.photographers);
+//     p.createPCardList();
+
+//     const navListItems = [...document.querySelectorAll('nav ul li')];
+//     const taggedElements = [...document.querySelectorAll("[data-tags]")];
+//     MainNavFilter(navListItems, taggedElements);
+    
+// })
 
 LoadData().then( (data) => {
-    HeaderTags();
+    if (window.location.pathname.includes("/photographer.html")) {
+        console.log('this is a photographer page');
+        let p = PhotographerPage(data.photographers);
+        p.createInfoSection();
+    } else {
+        HeaderTags();
 
-    let p = PhotographerFactory(data.photographers);
-    p.createPCardList();
+        let p = PhotographerFactory(data.photographers);
+        p.createPCardList();
 
-    const navListItems = [...document.querySelectorAll('nav ul li')];
-    const taggedElements = [...document.querySelectorAll("[data-tags]")];
-    MainNavFilter(navListItems, taggedElements);
-    
+        const navListItems = [...document.querySelectorAll('nav ul li')];
+        const taggedElements = [...document.querySelectorAll("[data-tags]")];
+        MainNavFilter(navListItems, taggedElements);
+    }
 })
 
 
