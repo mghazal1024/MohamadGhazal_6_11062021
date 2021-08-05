@@ -7,6 +7,7 @@ const HeaderTags = () => {
     //Adding an ALL tag to the main navigation
     const allTag = document.createElement('li')
     allTag.classList.add('selected');
+    allTag.setAttribute('tabIndex', '0');
     allTag.innerHTML = "#all";
     mainNavList.appendChild(allTag);
 
