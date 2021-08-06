@@ -263,6 +263,10 @@
     display: flex;
 }
 
+.like-and-price-section {
+    display: none;
+}
+
 @media screen and (min-width: $tablet-break) {
     .photographer {
         background-color: #FAFAFA;
@@ -291,6 +295,29 @@
             height: 200px;
         }
     }
+
+    .like-and-price-section {
+        width: 380px;
+        display: flex;
+        padding: 20px 35px;
+        background-color: $secondary-color;
+        align-items: center;
+        justify-content: space-between;
+        position: fixed;
+        bottom: 0;
+        right: 40px;
+        border-radius: 5px 5px 0px 0px;
+        z-index: 30;
+        h4 {
+            font-size: 1.5rem;
+            line-height: 2rem;
+            color: $black;
+        }
+        .like-container {
+            display: flex;
+        }
+    }
+
 }
 
 @media screen and (min-width: $desktop-break) {

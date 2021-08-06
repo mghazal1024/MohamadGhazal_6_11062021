@@ -15,7 +15,8 @@ LoadData().then( (data) => {
         p.createInfoSection();
         p.createImagesSection();
         p.createLightbox();
-
+        p.createPriceSection();
+        
         LightBox();
 
     } else {

@@ -2,6 +2,7 @@ import ImagesSection from "../Components/Photographer/ImagesSection.js";
 import InfoSection from "../Components/Photographer/InfoSection.js";
 import ImageLike from "./ImageLike.js";
 import LightBoxSection from '../Components/Photographer/LightBoxSection.js'
+import PriceSection from "../Components/Photographer/PriceSection.js";
 // import LightBox from "./LightBox.js";
 
 const PhotographerPage = (data) => {
@@ -28,10 +29,17 @@ const PhotographerPage = (data) => {
 
         mainContainer.innerHTML += LightBoxSection(media, name);
     
-        ImageLike(media);
     }
 
-    return { createInfoSection, createImagesSection, createLightbox }
+    const createPriceSection = () => {
+
+        mainContainer.innerHTML += PriceSection(photographer, media);
+
+        ImageLike(media);
+
+    }
+
+    return { createInfoSection, createImagesSection, createLightbox, createPriceSection }
 }
 
 export default PhotographerPage
