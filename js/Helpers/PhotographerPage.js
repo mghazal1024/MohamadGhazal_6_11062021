@@ -1,4 +1,7 @@
+import ImagesSection from "../Components/Photographer/ImagesSection.js";
+import InfoSection from "../Components/Photographer/InfoSection.js";
 import ImageLike from "./ImageLike.js";
+import LightBoxSection from '../Components/Photographer/LightBoxSection.js'
 // import LightBox from "./LightBox.js";
 
 const PhotographerPage = (data) => {
@@ -11,128 +14,20 @@ const PhotographerPage = (data) => {
     let { portrait, name, city, country, tagline, tags } = photographer[0];
 
     const createInfoSection = () => {
-        
-        let pTags = tags.map( tag => {
-            return `<li>${tag}</li>`
-        })
 
-        let infoSection = `
-        <section class="photographer">
-            <div class="photographer__info">
-                <div class="photographer__info-contact">
-                    <h1>${name}</h1>
-                    <button>Contactez-moi</button>
-                </div>
-                <h2 class="primary-color">${city}, ${country}</h2>
-                <p>${tagline}</p>
-                <ul class="photographer__tags">
-                    ${pTags.join(' ')}
-                </ul>
-            </div>
-            <div class="photographer__portrait">
-                <img src="/images/${portrait}" alt=${name} />
-            </div>
-        </section>
-        `
-        mainContainer.innerHTML += infoSection;
+        mainContainer.innerHTML += InfoSection(portrait, name, city, country, tagline, tags);
 
     }
 
     const createImagesSection = () => {
 
-        let pGalleryItems = media.map( item => {
-            let itemLikes = item.likes;
-            if(item.image) {
-                let mediaItem = `
-                <li>
-                    <div class="image" aria-label=${item.title} role="button" tabIndex="0">
-                        <img src="./images/${name.split(' ')[0]}/${item.image}" alt=${item.title}/>>
-                    </div>
-                    <h4 class="image__title">${item.title}</h4>
-                    <div class="image__rating">
-                        <h4>${itemLikes}</h4>
-                        <i class="far fa-heart unselected show"></i>
-                        <i class="fas fa-heart selected hidden"></i>
-                    </div>
-                </li>
-            `
-            return mediaItem;
-            } else if (item.video) {
-                let mediaItem = `
-                <li>
-                    <div class="image" aria-label=${item.title} role="button" tabIndex="0">
-                        <video controls="controls" src="./images/${name.split(' ')[0]}/${item.video}"></video>
-                    </div>
-                    <h4 class="image__title">${item.title}</h4>
-                    <div class="image__rating">
-                        <h4>${itemLikes}</h4>
-                        <i class="far fa-heart unselected show"></i>
-                        <i class="fas fa-heart selected hidden"></i>
-                    </div>
-                </li>
-            `
-            return mediaItem;
-            }
-        })
-
-        let gallerySection = `
-            <section class="photographer__images">
-                <div class="trier">
-                    <p>Trier par</p>
-                    <div class="trier__list">
-                        <select>
-                            <option value="popularite">Popularité</option>
-                            <option value="date">Date</option>
-                            <option value="titre">Titre</option>
-                        </select>
-                    </div>
-                </div>
-                <ul class="photographer__images-list">
-                    ${pGalleryItems.join('')}
-                </ul>
-            </section>
-        `
-        mainContainer.innerHTML += gallerySection;
-        // ImageLike(media);
+        mainContainer.innerHTML += ImagesSection(media, name);
     }
 
     const createLightbox = () => {
 
-        let lightboxItem = media.map( item => {
-            if(item.image) {
-                let mediaItem = `
-                <li>
-                    <img src="./images/${name.split(' ')[0]}/${item.image}" alt=${item.title}/>
-                    <p>${item.title}</p>
-                </li>
-            `
-            return mediaItem;
-            } else if (item.video) {
-                let mediaItem = `
-                <li>
-                    <video controls="controls" src="./images/${name.split(' ')[0]}/${item.video}"></video>
-                    <p>${item.title}</p>
-                </li>
-            `
-            return mediaItem;
-            }
-        })
-
-
-        let lightboxSection = `
-        <section class="lightbox">
-            <div class="lightbox__container">
-                <div class="lightbox__previous" aria-label="Previous image" role="button" tabIndex="0"></div>
-                <ul class="lightbox__images">
-                    ${lightboxItem.join(' ')}
-                </ul>
-                <div class="lightbox__next" aria-label="Next image" role="button" tabIndex="0"></div>
-                <div class="lightbox__close" aria-label="Close lightbox" role="button" tabIndex="0"></div>
-            </div>
-        </section>
-        `
-        mainContainer.innerHTML += lightboxSection;
-        // LightBox();
+        mainContainer.innerHTML += LightBoxSection(media, name);
+    
         ImageLike(media);
     }
 

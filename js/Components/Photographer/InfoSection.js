@@ -1,4 +1,9 @@
-const InfoSection = (portrait, name, city, country, tagline, pTags) => {
+const InfoSection = (portrait, name, city, country, tagline, tags) => {
+
+    let pTags = tags.map( tag => {
+        return `<li>${tag}</li>`
+    })
+
     let infoSection = `
         <section class="photographer">
             <div class="photographer__info">
