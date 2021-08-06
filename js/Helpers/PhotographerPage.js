@@ -38,28 +38,30 @@ const PhotographerPage = (data) => {
     const createImagesSection = () => {
 
         let pGalleryItems = media.map( item => {
-            // let mediaItem = `
-            //     <li>
-            //         <div class="image">
-            //             <img src="./images/${name.split(' ')[0]}/${item.image}" alt=${item.title}/>>
-            //         </div>
-            //     </li>
-            // `
-            // return mediaItem;
             if(item.image) {
                 let mediaItem = `
-                <li>
+                <li aria-label=${item.title} role="button" tabIndex="0">
                     <div class="image">
                         <img src="./images/${name.split(' ')[0]}/${item.image}" alt=${item.title}/>>
+                    </div>
+                    <h4 class="image__title">${item.title}</h4>
+                    <div class="image__rating">
+                        <h4>12</h4>
+                        <h4>O</h4>
                     </div>
                 </li>
             `
             return mediaItem;
             } else if (item.video) {
                 let mediaItem = `
-                <li>
+                <li aria-label=${item.title} role="button" tabIndex="0">
                     <div class="image">
                         <video controls="controls" src="./images/${name.split(' ')[0]}/${item.video}"></video>
+                    </div>
+                    <h4 class="image__title">${item.title}</h4>
+                    <div class="image__rating">
+                        <h4>12</h4>
+                        <h4>O</h4>
                     </div>
                 </li>
             `
@@ -88,7 +90,45 @@ const PhotographerPage = (data) => {
 
     }
 
-    return { createInfoSection, createImagesSection }
+    const createLightbox = () => {
+
+        let lightboxItem = media.map( item => {
+            if(item.image) {
+                let mediaItem = `
+                <li>
+                    <img src="./images/${name.split(' ')[0]}/${item.image}" alt=${item.title}/>
+                    <p>${item.title}</p>
+                </li>
+            `
+            return mediaItem;
+            } else if (item.video) {
+                let mediaItem = `
+                <li>
+                    <video controls="controls" src="./images/${name.split(' ')[0]}/${item.video}"></video>
+                    <p>${item.title}</p>
+                </li>
+            `
+            return mediaItem;
+            }
+        })
+
+
+        let lightboxSection = `
+        <section class="lightbox">
+            <div class="lightbox__container">
+                <div class="lightbox__previous"></div>
+                <ul class="lightbox__images">
+                    ${lightboxItem.join(' ')}
+                </ul>
+                <div class="lightbox__next"></div>
+                <div class="lightbox__close"></div>
+            </div>
+        </section>
+        `
+        mainContainer.innerHTML += lightboxSection;
+    }
+
+    return { createInfoSection, createImagesSection, createLightbox }
 }
 
 export default PhotographerPage
