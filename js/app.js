@@ -6,6 +6,8 @@ import HeaderTags from './Components/HeaderTags.js';
 import PhotographerFactory from './Helpers/PhotographerFactory.js';
 import MainNavFilter from './Helpers/MainNavFilter.js';
 import PhotographerPage from './Helpers/PhotographerPage.js';
+import ImageLike from './Helpers/ImageLike.js';
+import LightBox from './Helpers/LightBox.js';
 
 
 // LoadData().then( (data) => {
@@ -22,12 +24,13 @@ import PhotographerPage from './Helpers/PhotographerPage.js';
 
 LoadData().then( (data) => {
     if (window.location.pathname.includes("/photographer.html")) {
-        console.log('this is a photographer page');
-        console.log(window.location.search)
         let p = PhotographerPage(data);
         p.createInfoSection();
         p.createImagesSection();
         p.createLightbox();
+
+        LightBox();
+        // ImageLike(data);
 
     } else {
         HeaderTags();

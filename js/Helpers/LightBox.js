@@ -1,6 +1,6 @@
 const LightBox = () => {
 
-    const pMedia = [...document.querySelectorAll('.photographer__images-list li')];
+    const pMedia = [...document.querySelectorAll('.photographer__images-list li .image')];
     const lightbox = document.querySelector('.lightbox');
     const lightboxListItems = [...document.querySelectorAll('.lightbox__images li')];
     const lightboxClose = document.querySelector('.lightbox__close');
@@ -49,7 +49,7 @@ const LightBox = () => {
 
     //Close lightbox
     const closeLightbox = () => {
-        photographer.style.display = "flex";
+        photographer.style.display = "grid";
         photographerImages.style.display = "flex";
         lightbox.classList.remove('show');
     }

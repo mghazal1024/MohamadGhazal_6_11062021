@@ -1,4 +1,5 @@
-import LightBox from "./LightBox.js";
+import ImageLike from "./ImageLike.js";
+// import LightBox from "./LightBox.js";
 
 const PhotographerPage = (data) => {
     console.log(data)
@@ -40,30 +41,33 @@ const PhotographerPage = (data) => {
     const createImagesSection = () => {
 
         let pGalleryItems = media.map( item => {
+            let itemLikes = item.likes;
             if(item.image) {
                 let mediaItem = `
-                <li aria-label=${item.title} role="button" tabIndex="0">
-                    <div class="image">
+                <li>
+                    <div class="image" aria-label=${item.title} role="button" tabIndex="0">
                         <img src="./images/${name.split(' ')[0]}/${item.image}" alt=${item.title}/>>
                     </div>
                     <h4 class="image__title">${item.title}</h4>
                     <div class="image__rating">
-                        <h4>12</h4>
-                        <h4>O</h4>
+                        <h4>${itemLikes}</h4>
+                        <i class="far fa-heart unselected show"></i>
+                        <i class="fas fa-heart selected hidden"></i>
                     </div>
                 </li>
             `
             return mediaItem;
             } else if (item.video) {
                 let mediaItem = `
-                <li aria-label=${item.title} role="button" tabIndex="0">
-                    <div class="image">
+                <li>
+                    <div class="image" aria-label=${item.title} role="button" tabIndex="0">
                         <video controls="controls" src="./images/${name.split(' ')[0]}/${item.video}"></video>
                     </div>
                     <h4 class="image__title">${item.title}</h4>
                     <div class="image__rating">
-                        <h4>12</h4>
-                        <h4>O</h4>
+                        <h4>${itemLikes}</h4>
+                        <i class="far fa-heart unselected show"></i>
+                        <i class="fas fa-heart selected hidden"></i>
                     </div>
                 </li>
             `
@@ -89,7 +93,7 @@ const PhotographerPage = (data) => {
             </section>
         `
         mainContainer.innerHTML += gallerySection;
-
+        // ImageLike(media);
     }
 
     const createLightbox = () => {
@@ -128,7 +132,8 @@ const PhotographerPage = (data) => {
         </section>
         `
         mainContainer.innerHTML += lightboxSection;
-        LightBox();
+        // LightBox();
+        ImageLike(media);
     }
 
     return { createInfoSection, createImagesSection, createLightbox }

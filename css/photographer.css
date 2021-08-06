@@ -218,7 +218,6 @@ p {
   flex-wrap: wrap;
   justify-content: space-between;
   margin-bottom: 30px;
-  cursor: pointer;
 }
 
 .photographer__images-list li .image {
@@ -227,6 +226,7 @@ p {
   border-radius: 5px;
   overflow: hidden;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .photographer__images-list li .image img, .photographer__images-list li .image video {
@@ -248,6 +248,17 @@ p {
 .photographer__images-list li .image__rating h4 {
   font-size: 1.5rem;
   line-height: 1.9rem;
+  margin-right: 10px;
+}
+
+.photographer__images-list li .image__rating i.show {
+  cursor: pointer;
+  font-size: 20px;
+  color: #901C1C;
+}
+
+.photographer__images-list li .image__rating i.hidden {
+  display: none;
 }
 
 .lightbox {
