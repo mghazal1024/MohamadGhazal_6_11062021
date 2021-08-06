@@ -14,6 +14,12 @@ const PhotographerPage = (data) => {
     const media = data.media.filter( m => m.photographerId == id);
     let { portrait, name, city, country, tagline, tags } = photographer[0];
 
+    let totalLikes = 0;
+
+    media.map( item => {
+        totalLikes += item.likes;
+    })
+
     const createInfoSection = () => {
 
         mainContainer.innerHTML += InfoSection(portrait, name, city, country, tagline, tags);
@@ -33,9 +39,9 @@ const PhotographerPage = (data) => {
 
     const createPriceSection = () => {
 
-        mainContainer.innerHTML += PriceSection(photographer, media);
+        mainContainer.innerHTML += PriceSection(photographer, totalLikes);
 
-        ImageLike(media);
+        ImageLike(media, totalLikes);
 
     }
 

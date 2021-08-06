@@ -91,6 +91,7 @@
         width: 100%;
         justify-content: space-between;
         flex-wrap: wrap;
+        padding-bottom: 70px;
         li {
             width: 350px;
             display: flex;
@@ -315,6 +316,11 @@
         }
         .like-container {
             display: flex;
+            align-items: center;
+            i {
+                margin-left: 10px;
+                font-size: 20px;
+            }
         }
     }
 

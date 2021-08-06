@@ -244,6 +244,7 @@ p {
           justify-content: space-between;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  padding-bottom: 70px;
 }
 
 .photographer__images-list li {
@@ -535,6 +536,13 @@ p {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .like-and-price-section .like-container i {
+    margin-left: 10px;
+    font-size: 20px;
   }
 }
 
