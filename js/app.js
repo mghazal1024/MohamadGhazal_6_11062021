@@ -6,7 +6,6 @@ import HeaderTags from './Components/HeaderTags.js';
 import PhotographerFactory from './Helpers/PhotographerFactory.js';
 import MainNavFilter from './Helpers/MainNavFilter.js';
 import PhotographerPage from './Helpers/PhotographerPage.js';
-import LightBox from './Helpers/LightBox.js';
 
 
 // LoadData().then( (data) => {
@@ -30,7 +29,6 @@ LoadData().then( (data) => {
         p.createImagesSection();
         p.createLightbox();
 
-        LightBox();
     } else {
         HeaderTags();
 

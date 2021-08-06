@@ -6,15 +6,30 @@ const LightBox = () => {
     const lightboxClose = document.querySelector('.lightbox__close');
     const lightboxPrevious = document.querySelector('.lightbox__previous');
     const lightboxNext = document.querySelector('.lightbox__next');
+    
+    const mainContainer = document.querySelector('.photographer-main-container');
+    const photographer = document.querySelector('.photographer');
+    const photographerImages = document.querySelector('.photographer__images');
 
     let currentSlide = 0;
 
-    pMedia.map( media => {
-        media.addEventListener('click', () => {
+    const handleKeyEvent = (func) => {
+        let key = event.key;
+        if (key === 'Enter' || key === 'Space') {
+            func();
+        }
+    }
 
+
+    // Open Light box
+    pMedia.map( media => {
+
+        const openLightbox = () => {
             currentSlide = pMedia.indexOf(media);
 
             //Open Lightbox
+            photographer.style.display = "none";
+            photographerImages.style.display = "none";
             lightbox.classList.add('show');
 
             //Display the image clicked as default
@@ -22,15 +37,29 @@ const LightBox = () => {
                 item.classList.remove('show');
             })
             lightboxListItems[currentSlide].classList.add('show');
+        } 
+
+        media.addEventListener('click', openLightbox);
+        media.addEventListener('keyup', () => {
+            handleKeyEvent(openLightbox);
         })
     })
 
+
+
     //Close lightbox
-    lightboxClose.addEventListener('click', () => {
+    const closeLightbox = () => {
+        photographer.style.display = "flex";
+        photographerImages.style.display = "flex";
         lightbox.classList.remove('show');
+    }
+    lightboxClose.addEventListener('click', closeLightbox)
+    lightboxClose.addEventListener('keyup', () => {
+        handleKeyEvent(closeLightbox)
     })
 
-    lightboxNext.addEventListener('click', () => {
+    //Next button
+    const handleNext = () => {
         currentSlide += 1;
 
         if (currentSlide < lightboxListItems.length) {
@@ -45,9 +74,14 @@ const LightBox = () => {
             })
             lightboxListItems[currentSlide].classList.add('show');
         }
+    }
+    lightboxNext.addEventListener('click', handleNext);
+    lightboxNext.addEventListener('keyup', () => {
+        handleKeyEvent(handleNext);
     })
 
-    lightboxPrevious.addEventListener('click', () => {
+    //Previous Button
+    const handlePrevious = () => {
         currentSlide -= 1;
 
         if(currentSlide >= 0) {
@@ -62,6 +96,10 @@ const LightBox = () => {
             })
             lightboxListItems[currentSlide].classList.add('show');
         }
+    }
+    lightboxPrevious.addEventListener('click', handlePrevious)
+    lightboxPrevious.addEventListener('keyup', () => {
+        handleKeyEvent(handlePrevious);
     })
 
 

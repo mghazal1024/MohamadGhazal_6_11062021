@@ -45,37 +45,6 @@ const PhotographerFactory = (photographers) => {
         mainContainer.innerHTML = pCardList;
     }
 
-    // Create Photographer info section in photographer page
-    // const createPInfoSection = (portrait, pName, city, country, tagline, tags) => {
-
-    //     let pSection = document.createElement('section');
-    //     pSection.classList.add('photographer');
-
-    //     let allTags = tags.map( tag => {
-    //         return `<li>${tag}</li>`
-    //     })
-
-    //     let pInfo = `
-    //         <div class="photographer__info">
-    //             <div class="photographer__info-contact">
-    //                 <h1>${pName}</h1>
-    //                 <button>Contactez-moi</button>
-    //             </div>
-    //             <h4>${city}, ${country}</h4>
-    //             <p>${tagline}</p>
-    //             <ul class="photographer__tags>
-    //                 ${allTags.join(" ")}
-    //             </ul>
-    //         </div>
-    //         <div class="photographer__portrait">
-    //             <img src="/images/${portrait}" alt=${pName} />
-    //         </div>
-    //     `
-
-    //     pSection.innerHTML += pInfo;
-    //     photographerSectionFragment.appendChild(pSection)
-
-    // }
 
     return { createPCardList };
 

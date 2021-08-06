@@ -1,3 +1,5 @@
+import LightBox from "./LightBox.js";
+
 const PhotographerPage = (data) => {
     console.log(data)
     const id = window.location.search.split('id=')[1];
@@ -116,16 +118,17 @@ const PhotographerPage = (data) => {
         let lightboxSection = `
         <section class="lightbox">
             <div class="lightbox__container">
-                <div class="lightbox__previous"></div>
+                <div class="lightbox__previous" aria-label="Previous image" role="button" tabIndex="0"></div>
                 <ul class="lightbox__images">
                     ${lightboxItem.join(' ')}
                 </ul>
-                <div class="lightbox__next"></div>
-                <div class="lightbox__close"></div>
+                <div class="lightbox__next" aria-label="Next image" role="button" tabIndex="0"></div>
+                <div class="lightbox__close" aria-label="Close lightbox" role="button" tabIndex="0"></div>
             </div>
         </section>
         `
         mainContainer.innerHTML += lightboxSection;
+        LightBox();
     }
 
     return { createInfoSection, createImagesSection, createLightbox }
