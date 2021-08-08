@@ -4,6 +4,7 @@ import ImageLike from "./ImageLike.js";
 import LightBoxSection from '../Components/Photographer/LightBoxSection.js'
 import PriceSection from "../Components/Photographer/PriceSection.js";
 import ContactSection from "../Components/Photographer/ContactSection.js";
+import HandleContactForm from "./HandleContactForm.js";
 // import LightBox from "./LightBox.js";
 
 const PhotographerPage = (data) => {
@@ -49,6 +50,7 @@ const PhotographerPage = (data) => {
         mainContainer.innerHTML += ContactSection(name);
 
         ImageLike(media, totalLikes);
+        HandleContactForm();
 
     }
 
