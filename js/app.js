@@ -16,7 +16,7 @@ LoadData().then( (data) => {
         p.createImagesSection();
         p.createLightbox();
         p.createPriceSection();
-        
+        p.createContactForm();
         LightBox();
 
     } else {

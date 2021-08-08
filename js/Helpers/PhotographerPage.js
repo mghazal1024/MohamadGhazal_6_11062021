@@ -3,6 +3,7 @@ import InfoSection from "../Components/Photographer/InfoSection.js";
 import ImageLike from "./ImageLike.js";
 import LightBoxSection from '../Components/Photographer/LightBoxSection.js'
 import PriceSection from "../Components/Photographer/PriceSection.js";
+import ContactSection from "../Components/Photographer/ContactSection.js";
 // import LightBox from "./LightBox.js";
 
 const PhotographerPage = (data) => {
@@ -41,11 +42,17 @@ const PhotographerPage = (data) => {
 
         mainContainer.innerHTML += PriceSection(photographer, totalLikes);
 
+    }
+
+    const createContactForm = () => {
+
+        mainContainer.innerHTML += ContactSection(name);
+
         ImageLike(media, totalLikes);
 
     }
 
-    return { createInfoSection, createImagesSection, createLightbox, createPriceSection }
+    return { createInfoSection, createImagesSection, createLightbox, createPriceSection, createContactForm }
 }
 
 export default PhotographerPage
