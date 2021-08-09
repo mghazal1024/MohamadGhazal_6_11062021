@@ -1,8 +1,7 @@
 // Load data
 const LoadData = async () => {
     try {
-        const url = "/photographersData.json";
-        // const url = "/MohamadGhazal_6_11062021/data.json"
+        const url = "/json/photographersData.json";
         const result = await fetch(url);
         const data = await result.json(); 
         return data;
