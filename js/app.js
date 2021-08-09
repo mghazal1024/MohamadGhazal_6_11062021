@@ -1,7 +1,4 @@
-
 import LoadData from './Api.js';
-
-
 import HeaderTags from './Components/HeaderTags.js';
 import PhotographerFactory from './Helpers/PhotographerFactory.js';
 import MainNavFilter from './Helpers/MainNavFilter.js';
