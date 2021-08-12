@@ -5,11 +5,11 @@ const HeaderTags = () => {
     const mainNavFragment = document.createDocumentFragment();
 
     //Adding an ALL tag to the main navigation
-    const allTag = document.createElement('li')
-    allTag.classList.add('selected');
-    allTag.setAttribute('tabIndex', '0');
-    allTag.innerHTML = "#all";
-    mainNavList.appendChild(allTag);
+    // const allTag = document.createElement('li')
+    // allTag.classList.add('selected');
+    // allTag.setAttribute('tabIndex', '0');
+    // allTag.innerHTML = "#all";
+    // mainNavList.appendChild(allTag);
 
     //Creating the nav tag items
     const generalTags = ["portrait", "art", "fashion", "architecture", "travel", "sport", "animals", "events"];
