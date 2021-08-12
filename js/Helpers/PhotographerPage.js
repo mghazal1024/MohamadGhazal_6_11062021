@@ -52,7 +52,7 @@ const PhotographerPage = (data) => {
 
         ImageLike(media, totalLikes);
         HandleContactForm();
-        Sorting();
+        Sorting(media);
 
     }
 
