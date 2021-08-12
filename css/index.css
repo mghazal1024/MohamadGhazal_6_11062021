@@ -10,7 +10,8 @@ html {
 * {
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 /* ---COLORS------*/
@@ -64,9 +65,12 @@ p {
 }
 
 main .photographers__tags {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   list-style: none;
-  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   margin-top: 5px;
 }
 
@@ -74,10 +78,15 @@ header nav ul li, main .photographers__tags li {
   height: 22px;
   border: 1px solid #C4C4C4;
   border-radius: 11px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 0 10px;
   margin: 0 5px 5px 0;
+  -webkit-transition: 200ms ease-in-out;
   transition: 200ms ease-in-out;
   font-family: "DM Sans", sans-serif;
   font-size: 0.75rem;
@@ -110,11 +119,18 @@ header nav ul li, main .photographers__tags li {
 
 header {
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 40px 20px;
-  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 header .logo-link {
@@ -126,19 +142,27 @@ header .logo-link {
 
 header .logo-link img {
   width: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 header nav {
-  order: 1;
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
   margin: 20px 0px;
 }
 
 header nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   list-style: none;
-  justify-content: center;
-  flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 header nav ul li {
@@ -160,24 +184,37 @@ header h2 {
 }
 
 main {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   padding: 0 20px;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 main .photographers {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 100%;
   list-style: none;
-  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   padding: 40px 0;
 }
 
 main .photographers__list-item {
   width: 100%;
   display: none;
-  flex-direction: column;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin-bottom: 40px;
 }
 
@@ -192,6 +229,8 @@ main .photographers__list-item a:hover {
 }
 
 main .photographers__list-item.show {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -200,14 +239,16 @@ main .photographers__portrait {
   height: 200px;
   border-radius: 50%;
   overflow: hidden;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
   margin-bottom: 20px;
 }
 
 main .photographers__portrait img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 main .photographers .name-link {
@@ -220,7 +261,9 @@ main .photographers .name-link:hover h2 {
 }
 
 main .photographers__tags {
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 @media screen and (min-width: 680px) {
@@ -237,7 +280,8 @@ main .photographers__tags {
 
 @media screen and (min-width: 1024px) {
   header {
-    flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
     padding: 40px;
   }
   header .logo-link {
@@ -245,7 +289,9 @@ main .photographers__tags {
   }
   header nav {
     width: unset;
-    order: 0;
+    -webkit-box-ordinal-group: 1;
+        -ms-flex-order: 0;
+            order: 0;
     margin: 0 40px;
   }
   main {
@@ -253,7 +299,9 @@ main .photographers__tags {
   }
   main .photographers {
     padding: 100px 40px;
-    justify-content: space-evenly;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
   }
   main .photographers__list-item {
     width: 30%;

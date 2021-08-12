@@ -5,6 +5,7 @@ import LightBoxSection from '../Components/Photographer/LightBoxSection.js'
 import PriceSection from "../Components/Photographer/PriceSection.js";
 import ContactSection from "../Components/Photographer/ContactSection.js";
 import HandleContactForm from "./HandleContactForm.js";
+import Sorting from "./Sorting.js";
 // import LightBox from "./LightBox.js";
 
 const PhotographerPage = (data) => {
@@ -51,6 +52,7 @@ const PhotographerPage = (data) => {
 
         ImageLike(media, totalLikes);
         HandleContactForm();
+        Sorting();
 
     }
 

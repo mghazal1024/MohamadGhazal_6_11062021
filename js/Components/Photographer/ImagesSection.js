@@ -1,3 +1,5 @@
+import SortingSection from "./SortingSection.js";
+
 const ImagesSection = (media, name) => {
     let pGalleryItems = media.map( item => {
         let itemLikes = item.likes;
@@ -36,16 +38,7 @@ const ImagesSection = (media, name) => {
 
     let gallerySection = `
         <section class="photographer__images">
-            <div class="trier">
-                <p>Trier par</p>
-                <div class="trier__list">
-                    <select>
-                        <option value="popularite">Popularité</option>
-                        <option value="date">Date</option>
-                        <option value="titre">Titre</option>
-                    </select>
-                </div>
-            </div>
+            ${SortingSection()}
             <ul class="photographer__images-list">
                 ${pGalleryItems.join('')}
             </ul>
