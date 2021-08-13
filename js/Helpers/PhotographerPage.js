@@ -31,7 +31,7 @@ const PhotographerPage = (data) => {
 
     const createImagesSection = () => {
 
-        mainContainer.innerHTML += ImagesSection(media, name);
+        mainContainer.innerHTML += ImagesSection(media);
     }
 
     const createLightbox = () => {

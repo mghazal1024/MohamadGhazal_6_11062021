@@ -4,7 +4,7 @@ const LightBoxSection = (media, name) => {
         if(item.image) {
             let mediaItem = `
             <li>
-                <img src="./images/${name.split(' ')[0]}/${item.image}" alt=${item.title}/>
+                <img src="./images/${item.image}" alt=${item.title}/>
                 <p>${item.title}</p>
             </li>
         `
@@ -12,7 +12,7 @@ const LightBoxSection = (media, name) => {
         } else if (item.video) {
             let mediaItem = `
             <li>
-                <video controls="controls" src="./images/${name.split(' ')[0]}/${item.video}"></video>
+                <video controls="controls" src="./images/${item.video}"></video>
                 <p>${item.title}</p>
             </li>
         `

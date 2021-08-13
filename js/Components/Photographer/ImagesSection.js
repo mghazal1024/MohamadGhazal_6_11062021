@@ -1,13 +1,13 @@
 import SortingSection from "./SortingSection.js";
 
-const ImagesSection = (media, name) => {
+const ImagesSection = (media) => {
     let pGalleryItems = media.map( item => {
         let itemLikes = item.likes;
         if(item.image) {
             let mediaItem = `
             <li>
                 <div class="image" aria-label=${item.title} role="button" tabIndex="0">
-                    <img src="./images/${name.split(' ')[0]}/${item.image}" alt=${item.title}/>>
+                    <img src="./images/${item.image}" alt=${item.title}/>>
                 </div>
                 <h4 class="image__title">${item.title}</h4>
                 <div class="image__rating">
@@ -22,7 +22,7 @@ const ImagesSection = (media, name) => {
             let mediaItem = `
             <li>
                 <div class="image" aria-label=${item.title} role="button" tabIndex="0">
-                    <video controls="controls" src="./images/${name.split(' ')[0]}/${item.video}"></video>
+                    <video controls="controls" src="./images/${item.video}"></video>
                 </div>
                 <h4 class="image__title">${item.title}</h4>
                 <div class="image__rating">

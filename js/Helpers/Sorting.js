@@ -1,8 +1,12 @@
+import ImagesSection from "../Components/Photographer/ImagesSection.js";
+
 const Sorting = (media) => {
 
     const chevron = document.querySelector('.trier .trier__list .chevron');
     const trierList = document.querySelector('.trier__list');
     const trier = [...document.querySelectorAll('.trier__list li.trier__list-item')];
+
+    const galleryContainer = document.querySelector('.photographer__images');
 
     trierList.addEventListener('click', () => {
         trierList.classList.toggle('selected');
@@ -46,7 +50,8 @@ const Sorting = (media) => {
                 })
             }
             console.log(media)
-
+            // galleryContainer.innerHTML = "";
+            // galleryContainer.innerHTML = ImagesSection(media);
         })
     })
 
