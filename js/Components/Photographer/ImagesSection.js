@@ -5,7 +5,7 @@ const ImagesSection = (media) => {
         let itemLikes = item.likes;
         if(item.image) {
             let mediaItem = `
-            <li>
+            <li data-title="${item.title}" data-likes=${item.likes} data-date=${item.date}>
                 <div class="image" aria-label=${item.title} role="button" tabIndex="0">
                     <img src="./images/${item.image}" alt=${item.title}/>>
                 </div>
@@ -20,7 +20,7 @@ const ImagesSection = (media) => {
         return mediaItem;
         } else if (item.video) {
             let mediaItem = `
-            <li>
+            <li data-title="${item.title}" data-likes=${item.likes} data-date=${item.date}>
                 <div class="image" aria-label=${item.title} role="button" tabIndex="0">
                     <video controls="controls" src="./images/${item.video}"></video>
                 </div>

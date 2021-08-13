@@ -6,7 +6,8 @@ const Sorting = (media) => {
     const trierList = document.querySelector('.trier__list');
     const trier = [...document.querySelectorAll('.trier__list li.trier__list-item')];
 
-    const galleryContainer = document.querySelector('.photographer__images');
+    const galleryContainer = document.querySelector('.photographer__images-list');
+    const galleryItems = [...document.querySelectorAll('.photographer__images-list li')];
 
     trierList.addEventListener('click', () => {
         trierList.classList.toggle('selected');
@@ -15,43 +16,67 @@ const Sorting = (media) => {
 
     trier.map ( t => {
         t.addEventListener('click', () => {
+
             const dataSortValue = t.attributes[1].nodeValue;
 
-            trier.map( t => {
-                t.classList.remove('first');
-            })
+            const sortItems = () => {
 
-            t.classList.add('first');
-            if (dataSortValue === "popularité") {
-                media.sort((a, b) => {
-                    return b.likes - a.likes;
+
+                trier.map( t => {
+                    t.classList.remove('first');
                 })
+
+                t.classList.add('first');
+
+
+                if( dataSortValue === "popularité") {
+                    galleryItems.sort((a,b) => {
+                        return a.dataset.likes - b.dataset.likes;
+                    })
+    
+                    for( let i = 0; i < galleryItems.length; i++ ) {
+                        galleryContainer.insertBefore(galleryItems[i], galleryContainer.firstChild)
+                    }
+                }
+                if( dataSortValue === "titre") {
+                    galleryItems.sort((a, b) => {
+
+                        let aDataset = a.dataset.title.toLowerCase();
+                        let bDataset = b.dataset.title.toLowerCase();
+
+                        if (aDataset < bDataset) {
+                            return 1
+                        }
+                        if (aDataset > bDataset) {
+                            return -1
+                        }
+                        return 0
+                    })
+                    for( let i = 0; i < galleryItems.length; i++ ) {
+                        galleryContainer.insertBefore(galleryItems[i], galleryContainer.firstChild)
+                    }
+                }
+                if( dataSortValue === 'date') {
+                    galleryItems.sort((a, b) => {
+                        let aDataset = a.dataset.date;
+                        let bDataset = b.dataset.date;
+                        if( aDataset < bDataset ) {
+                            return 1;
+                        }
+                        if( aDataset > bDataset ) {
+                            return -1;
+                        }
+                        return 0
+                    })
+                    for( let i = 0; i < galleryItems.length; i++ ) {
+                        galleryContainer.insertBefore(galleryItems[i], galleryContainer.firstChild)
+                    }
+                }
+
             }
-            if (dataSortValue === "titre") {
-                media.sort((a, b) => {
-                    if (a.title.toLowerCase() < b.title.toLowerCase()) {
-                        return -1
-                    }
-                    if (a.title.toLowerCase() > b.title.toLowerCase()) {
-                        return 1
-                    }
-                    return 0;
-                })
-            }
-            if (dataSortValue === "date") {
-                media.sort((a, b) => {
-                    if (a.date < b.date) {
-                        return -1
-                    }
-                    if (a.date > b.date) {
-                        return 1
-                    }
-                    return 0;
-                })
-            }
-            console.log(media)
-            // galleryContainer.innerHTML = "";
-            // galleryContainer.innerHTML = ImagesSection(media);
+
+            sortItems();
+
         })
     })
 
