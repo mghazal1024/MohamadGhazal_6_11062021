@@ -3,10 +3,10 @@ const SortingSection = () => {
     let sortingSection = `
         <section class="trier">
             <p>Trier par</p>
-            <ul class="trier__list" tabIndex="0">
-                <li class="trier__list-item first" data-sort="popularité" tabIndex="0">Popularité</li>
-                <li class="trier__list-item" data-sort="date" tabIndex="0">Date</li>
-                <li class="trier__list-item" data-sort="titre" tabIndex="0">Titre</li>
+            <ul class="trier__list" tabIndex="0" aria-expanded="false" aria-haspopup="true">
+                <li class="trier__list-item first" data-sort="popularité">Popularité</li>
+                <li class="trier__list-item" data-sort="date">Date</li>
+                <li class="trier__list-item" data-sort="titre">Titre</li>
                 <li class="chevron" tabIndex="0"><i class="fas fa-chevron-down"></i>
             </ul>
         </section>

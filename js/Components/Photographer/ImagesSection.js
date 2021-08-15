@@ -12,8 +12,8 @@ const ImagesSection = (media) => {
                 <h4 class="image__title">${item.title}</h4>
                 <div class="image__rating">
                     <h4>${itemLikes}</h4>
-                    <i class="far fa-heart unselected show"></i>
-                    <i class="fas fa-heart selected hidden"></i>
+                    <i class="far fa-heart unselected show" role="button" tabIndex="0"></i>
+                    <i class="fas fa-heart selected hidden" role="button" tabIndex="0"></i>
                 </div>
             </li>
         `
@@ -27,8 +27,8 @@ const ImagesSection = (media) => {
                 <h4 class="image__title">${item.title}</h4>
                 <div class="image__rating">
                     <h4>${itemLikes}</h4>
-                    <i class="far fa-heart unselected show"></i>
-                    <i class="fas fa-heart selected hidden"></i>
+                    <i class="far fa-heart unselected show" role="button" tabIndex="0"></i>
+                    <i class="fas fa-heart selected hidden" role="button" tabIndex="0"></i>
                 </div>
             </li>
         `

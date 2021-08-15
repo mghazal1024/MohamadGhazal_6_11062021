@@ -1,6 +1,6 @@
 import ImagesSection from "../Components/Photographer/ImagesSection.js";
 
-const Sorting = (media) => {
+const Sorting = () => {
 
     const chevron = document.querySelector('.trier .trier__list .chevron');
     const trierList = document.querySelector('.trier__list');
@@ -12,6 +12,13 @@ const Sorting = (media) => {
     trierList.addEventListener('click', () => {
         trierList.classList.toggle('selected');
         chevron.classList.toggle('reversed');
+    })
+    trierList.addEventListener('keyup', (event) => {
+        let key = event.key;
+        if (key === 'Enter' || key === 'Space') {
+            trierList.classList.toggle('selected');
+            chevron.classList.toggle('reversed');
+        }
     })
 
     const handleResorting = () => {
