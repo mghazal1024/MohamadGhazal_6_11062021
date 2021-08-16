@@ -18,7 +18,7 @@ const InfoSection = (portrait, name, city, country, tagline, tags) => {
                 </ul>
             </div>
             <div class="photographer__portrait">
-                <img src="/images/${portrait}" alt=${name} />
+                <img src="images/${portrait}" alt=${name} />
             </div>
         </section>
         `
