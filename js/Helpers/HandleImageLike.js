@@ -1,5 +1,4 @@
-const ImageLike = (data, totalLikes) => {
-    // console.log(data)
+const HandleImageLike = (data, totalLikes) => {
 
     const heartsUnselected = [...document.querySelectorAll('.image__rating i.unselected')];
     const heartsSelected = [...document.querySelectorAll('.image__rating i.selected')]
@@ -93,4 +92,4 @@ const ImageLike = (data, totalLikes) => {
 
 }
 
-export default ImageLike;
+export default HandleImageLike;

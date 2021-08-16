@@ -1,6 +1,4 @@
-import ImagesSection from "../Components/Photographer/ImagesSection.js";
-
-const Sorting = () => {
+const HandleSorting = () => {
 
     const chevron = document.querySelector('.trier .trier__list .chevron');
     const trierList = document.querySelector('.trier__list');
@@ -144,5 +142,5 @@ const Sorting = () => {
 
 }
 
-export default Sorting;
+export default HandleSorting;
 

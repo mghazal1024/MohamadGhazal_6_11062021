@@ -1,15 +1,14 @@
 import ImagesSection from "../Components/Photographer/ImagesSection.js";
 import InfoSection from "../Components/Photographer/InfoSection.js";
-import ImageLike from "./ImageLike.js";
+import HandleImageLike from "./HandleImageLike.js";
 import LightBoxSection from '../Components/Photographer/LightBoxSection.js'
 import PriceSection from "../Components/Photographer/PriceSection.js";
 import ContactSection from "../Components/Photographer/ContactSection.js";
 import HandleContactForm from "./HandleContactForm.js";
-import Sorting from "./Sorting.js";
-// import LightBox from "./LightBox.js";
+import HandleSorting from "./HandleSorting.js";
+import HandleLightBox from "./HandleLightBox.js";
 
 const PhotographerPage = (data) => {
-    // console.log(data)
     const id = window.location.search.split('id=')[1];
     const mainContainer = document.querySelector('.photographer-main-container');
 
@@ -50,9 +49,10 @@ const PhotographerPage = (data) => {
 
         mainContainer.innerHTML += ContactSection(name);
 
-        ImageLike(media, totalLikes);
+        HandleImageLike(media, totalLikes);
         HandleContactForm();
-        Sorting(media);
+        HandleLightBox();
+        HandleSorting(media);
 
     }
 

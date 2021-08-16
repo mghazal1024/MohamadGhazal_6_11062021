@@ -476,6 +476,22 @@ p {
   background-color: white;
 }
 
+.contact__success {
+  display: none;
+}
+
+.contact__success.show {
+  display: flex;
+}
+
+.contact__form {
+  width: 100%;
+}
+
+.contact__form.hide {
+  display: none;
+}
+
 .contact__container {
   display: flex;
   align-items: center;
@@ -553,7 +569,8 @@ p {
 
 .contact__container form ul li .error-message {
   display: none;
-  color: white;
+  color: #901C1C;
+  padding-top: 5px;
 }
 
 .contact__container .contact__submit {

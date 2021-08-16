@@ -1,4 +1,4 @@
-const LightBox = () => {
+const HandleLightBox = () => {
 
     const pMedia = [...document.querySelectorAll('.photographer__images-list li .image')];
     const lightbox = document.querySelector('.lightbox');
@@ -7,7 +7,6 @@ const LightBox = () => {
     const lightboxPrevious = document.querySelector('.lightbox__previous');
     const lightboxNext = document.querySelector('.lightbox__next');
     
-    const mainContainer = document.querySelector('.photographer-main-container');
     const photographer = document.querySelector('.photographer');
     const photographerImages = document.querySelector('.photographer__images');
 
@@ -107,4 +106,4 @@ const LightBox = () => {
 }
 
 
-export default LightBox;
+export default HandleLightBox;

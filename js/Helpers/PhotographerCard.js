@@ -3,7 +3,7 @@ const mainContainer = document.querySelector('.main-container');
 
 
 // FACTORY FUNCTION
-const PhotographerFactory = (photographers) => {
+const PhotographerCard = (photographers) => {
 
     // Create Photographer card for Homepage
     const createPCard = (portrait, pName, city, country, tagline, price, tags, id) => {
@@ -51,4 +51,4 @@ const PhotographerFactory = (photographers) => {
 
 }
 
-export default PhotographerFactory;
+export default PhotographerCard;

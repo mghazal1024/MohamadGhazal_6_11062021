@@ -1,3 +1,4 @@
+// Component that create the html for the Sorting dropdown menu
 const SortingSection = () => {
 
     let sortingSection = `

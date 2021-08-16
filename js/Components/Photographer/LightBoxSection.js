@@ -1,4 +1,5 @@
-const LightBoxSection = (media, name) => {
+// Component that create the html for the Lightbox section
+const LightBoxSection = (media) => {
 
     let lightboxItem = media.map( item => {
         if(item.image) {

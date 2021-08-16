@@ -1,4 +1,4 @@
-const MainNavFilter = ( navListItems, taggedElements ) => {
+const HandleMainNavFilter = ( navListItems, taggedElements ) => {
 
     // Array to hold the selected tags
     let tagArray = [];
@@ -52,4 +52,4 @@ const MainNavFilter = ( navListItems, taggedElements ) => {
     })
 }
 
-export default MainNavFilter
+export default HandleMainNavFilter

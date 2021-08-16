@@ -1,15 +1,8 @@
-
+// Component that create the html for the Main tag navigation in the homepage
 const HeaderTags = () => {
 
     const mainNavList = document.querySelector('header nav ul');
     const mainNavFragment = document.createDocumentFragment();
-
-    //Adding an ALL tag to the main navigation
-    // const allTag = document.createElement('li')
-    // allTag.classList.add('selected');
-    // allTag.setAttribute('tabIndex', '0');
-    // allTag.innerHTML = "#all";
-    // mainNavList.appendChild(allTag);
 
     //Creating the nav tag items
     const generalTags = ["portrait", "art", "fashion", "architecture", "travel", "sport", "animals", "events"];
@@ -17,6 +10,8 @@ const HeaderTags = () => {
         const tagItem = document.createElement('li');
         tagItem.innerText = `#${generalTag}`;
         tagItem.setAttribute('tabIndex', '0');
+        tagItem.setAttribute('role', 'button');
+        tagItem.setAttribute('aria-label', `${generalTag}`);
 
         mainNavFragment.appendChild(tagItem);
     });
