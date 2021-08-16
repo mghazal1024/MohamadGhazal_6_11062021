@@ -1,5 +1,5 @@
 const ImageLike = (data, totalLikes) => {
-    console.log(data)
+    // console.log(data)
 
     const heartsUnselected = [...document.querySelectorAll('.image__rating i.unselected')];
     const heartsSelected = [...document.querySelectorAll('.image__rating i.selected')]

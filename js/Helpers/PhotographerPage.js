@@ -9,7 +9,7 @@ import Sorting from "./Sorting.js";
 // import LightBox from "./LightBox.js";
 
 const PhotographerPage = (data) => {
-    console.log(data)
+    // console.log(data)
     const id = window.location.search.split('id=')[1];
     const mainContainer = document.querySelector('.photographer-main-container');
 
