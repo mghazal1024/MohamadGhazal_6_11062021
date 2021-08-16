@@ -13,6 +13,10 @@ const Sorting = () => {
         trierList.classList.toggle('selected');
         chevron.classList.toggle('reversed');
     })
+    trierList.addEventListener('focus', () => {
+        trierList.classList.toggle('selected');
+        chevron.classList.toggle('reversed');
+    })
     trierList.addEventListener('keyup', (event) => {
         let key = event.key;
         if (key === 'Enter' || key === 'Space') {
