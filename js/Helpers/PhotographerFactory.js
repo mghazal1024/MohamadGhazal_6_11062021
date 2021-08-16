@@ -17,7 +17,7 @@ const PhotographerFactory = (photographers) => {
         let pCard = `
             <li class='photographers__list-item show' aria-label='photographer' data-tags='${tagString}' tabIndex='0'>
                 <div class='photographers__portrait'>
-                    <img src='/images/${portrait}' alt=${pName} />
+                    <img src='images/${portrait}' alt=${pName} />
                 </div>
                 <a href="photographer.html?id=${id}" class='name-link'><h2>${pName}</h2></a>
                 <p class='p--small p--primary-color'>${city}, ${country}</p>
