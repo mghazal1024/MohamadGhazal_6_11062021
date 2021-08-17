@@ -30,9 +30,8 @@ const HandleSorting = () => {
     }
 
     trier.map ( t => {
-        t.addEventListener('click', () => {
 
-            const dataSortValue = t.attributes[1].nodeValue;
+        const dataSortValue = t.attributes[1].nodeValue;
 
             const sortItems = () => {
                 trier.map( t => {
@@ -79,60 +78,13 @@ const HandleSorting = () => {
 
             }
 
+        t.addEventListener('click', () => {
             sortItems();
-
         })
 
         t.addEventListener('keyup', (event) => {
             let key = event.key;
             if( key === 'Enter' || key === 'Space') {
-                const dataSortValue = t.attributes[1].nodeValue;
-
-                const sortItems = () => {
-                    trier.map( t => {
-                        t.classList.remove('first');
-                    })
-                    t.classList.add('first');
-    
-                    if( dataSortValue === "popularité") {
-                        galleryItems.sort((a,b) => {
-                            return a.dataset.likes - b.dataset.likes;
-                        })
-                        
-                        handleResorting();
-                    }
-                    if( dataSortValue === "titre") {
-                        galleryItems.sort((a, b) => {
-                            let aDataset = a.dataset.title.toLowerCase();
-                            let bDataset = b.dataset.title.toLowerCase();
-    
-                            if (aDataset < bDataset) {
-                                return 1
-                            }
-                            if (aDataset > bDataset) {
-                                return -1
-                            }
-                            return 0
-                        })
-                        handleResorting();
-                    }
-                    if(dataSortValue === 'date') {
-                        galleryItems.sort((a, b) => {
-                            let aDataset = a.dataset.date;
-                            let bDataset = b.dataset.date;
-                            if( aDataset < bDataset ) {
-                                return 1;
-                            }
-                            if( aDataset > bDataset ) {
-                                return -1;
-                            }
-                            return 0
-                        })
-                        handleResorting();
-                    }
-    
-                }
-
                 sortItems();
             }
         })
