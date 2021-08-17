@@ -115,6 +115,7 @@ header {
   align-items: center;
   padding: 40px 20px;
   flex-wrap: wrap;
+  position: relative;
 }
 
 header .logo-link {
@@ -157,6 +158,27 @@ header nav ul li.selected {
 
 header h2 {
   color: #901C1C;
+}
+
+header .content-btn {
+  padding: 5px 10px;
+  background-color: #DB8876;
+  border-radius: 5px;
+  color: #000000;
+  position: fixed;
+  border: 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: 1.125rem;
+  left: 50%;
+  top: 10px;
+  transform: translate(-50%, -150%);
+  transition: 200ms ease-in-out;
+  opacity: 0;
+}
+
+header .content-btn.show {
+  opacity: 1;
+  transform: translate(-50%, 0%);
 }
 
 main {

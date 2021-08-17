@@ -8,6 +8,7 @@ header {
     align-items: center;
     padding: 40px 20px;
     flex-wrap: wrap;
+    position: relative;
     .logo-link {
         max-width:  150px;
         background-color: transparent;
@@ -42,6 +43,25 @@ header {
     }
     h2 {
         color: $primary-color;
+    }
+    .content-btn {
+        padding: 5px 10px;
+        background-color: $tertiary-color;
+        border-radius: 5px;
+        color: $black;
+        position: fixed;
+        border: 0;
+        font-family: $primary-font;
+        font-size: 1.125rem;
+        left: 50%;
+        top: 10px;
+        transform: translate(-50%, -150%);
+        transition: $basic-transition;
+        opacity: 0;
+    }
+    .content-btn.show {
+        opacity: 1;
+        transform: translate(-50%, 0%);
     }
 }
 
