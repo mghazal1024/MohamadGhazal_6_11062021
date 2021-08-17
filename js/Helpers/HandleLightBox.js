@@ -9,6 +9,8 @@ const HandleLightBox = () => {
     
     const photographer = document.querySelector('.photographer');
     const photographerImages = document.querySelector('.photographer__images');
+    const totalLikesSection = document.querySelector('.like-and-price-section');
+    const header = document.querySelector('header');
 
     let currentSlide = 0;
 
@@ -29,6 +31,8 @@ const HandleLightBox = () => {
             //Open Lightbox
             photographer.style.display = "none";
             photographerImages.style.display = "none";
+            totalLikesSection.style.display = "none";
+        header.style.display = "none";
             lightbox.classList.add('show');
 
             //Display the image clicked as default
@@ -50,6 +54,8 @@ const HandleLightBox = () => {
     const closeLightbox = () => {
         photographer.style.display = "grid";
         photographerImages.style.display = "flex";
+        totalLikesSection.style.display = "flex";
+        header.style.display = "flex";
         lightbox.classList.remove('show');
     }
     lightboxClose.addEventListener('click', closeLightbox)

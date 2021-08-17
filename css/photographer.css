@@ -325,7 +325,7 @@ p {
   align-items: center;
   justify-content: center;
   position: fixed;
-  z-index: 20;
+  z-index: 50;
   background-color: white;
   top: 0;
   left: 0;

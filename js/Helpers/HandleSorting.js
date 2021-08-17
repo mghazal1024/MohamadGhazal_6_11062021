@@ -88,6 +88,10 @@ const HandleSorting = () => {
                 sortItems();
             }
         })
+        t.addEventListener('focus', () => {
+            trierList.classList.add('selected');
+            chevron.classList.add('reversed');
+        })
     })
 
 

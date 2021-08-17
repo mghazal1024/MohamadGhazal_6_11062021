@@ -13,12 +13,16 @@ const HandleContactForm = () => {
     const contactSuccess = contact.querySelector('.contact__success');
     const photographer = document.querySelector('.photographer');
     const photographerImages = document.querySelector('.photographer__images');
+    const totalLikesSection = document.querySelector('.like-and-price-section');
+    const header = document.querySelector('header');
 
 
     // Function to open the form
     const openForm = () => {
         photographer.style.display = "none";
         photographerImages.style.display = "none";
+        totalLikesSection.style.display = "none";
+        header.style.display = "none";
         contact.classList.add('show');
         contactFormContainer.classList.remove('hide');;
         contactSuccess.classList.remove('show');
@@ -28,6 +32,8 @@ const HandleContactForm = () => {
     const closeForm = () => {
         photographer.style.display = "grid";
         photographerImages.style.display = "flex";
+        totalLikesSection.style.display = "flex";
+        header.style.display = "flex";
         contact.classList.remove('show')
         contactFormContainer.classList.remove('hide');;
         contactSuccess.classList.remove('show');
