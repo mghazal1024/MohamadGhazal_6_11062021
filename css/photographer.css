@@ -266,7 +266,7 @@ p {
 .photographer__images-list {
   display: flex;
   width: 100%;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
   padding-bottom: 70px;
 }
@@ -502,6 +502,7 @@ p {
   padding: 35px;
   border-radius: 5px;
   position: relative;
+  overflow: scroll;
 }
 
 .contact__container .contact__close {
@@ -593,21 +594,24 @@ p {
     grid-template-columns: 1fr 200px;
     align-items: center;
   }
+  .photographer__info {
+    padding: 10px;
+  }
   .photographer__info-contact button {
     position: unset;
     transform: translateX(0);
-    margin-left: 10px;
+    margin-left: 50px;
     font-size: 20px;
     line-height: 26px;
-    padding: 25px 20px;
+    padding: 10px 15px;
   }
   .photographer__tags {
     position: relative;
     padding-top: 20px;
   }
   .photographer__portrait {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
   }
   .photographer__images-list {
     justify-content: space-around;
@@ -652,6 +656,11 @@ p {
   }
   .photographer__info-contact button {
     margin-left: 100px;
+    padding: 25px 20px;
+  }
+  .photographer__portrait {
+    width: 200px;
+    height: 200px;
   }
   .contact__container {
     width: 670px;

@@ -7,17 +7,16 @@ import PhotographerPage from './Helpers/PhotographerPage.js';
 
 // DOM ELEMENTS
 const contentButton = document.querySelector('.content-btn');
-
-
-
-window.addEventListener('scroll', () => {
-    let currentScrollPosition = window.pageYOffset;
-    if(currentScrollPosition > 50) {
-        contentButton.classList.add('show');
-    } else {
-        contentButton.classList.remove('show');
-    }
-})
+if(contentButton) {
+    window.addEventListener('scroll', () => {
+        let currentScrollPosition = window.pageYOffset;
+        if(currentScrollPosition > 50) {
+            contentButton.classList.add('show');
+        } else {
+            contentButton.classList.remove('show');
+        }
+    })
+}
 
 //Load the api and use it
 LoadData().then( (data) => {
