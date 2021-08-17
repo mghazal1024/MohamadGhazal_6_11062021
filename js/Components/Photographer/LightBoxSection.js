@@ -23,7 +23,7 @@ const LightBoxSection = (media) => {
 
 
     let lightboxSection = `
-    <section class="lightbox">
+    <section class="lightbox" aria-label="Lighbox" tabIndex="0">
         <div class="lightbox__container">
             <div class="lightbox__previous" aria-label="Previous image" role="button" tabIndex="0"></div>
             <ul class="lightbox__images">

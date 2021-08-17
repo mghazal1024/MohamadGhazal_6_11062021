@@ -182,6 +182,9 @@ main .photographers__list-item {
 }
 
 main .photographers__list-item a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   cursor: pointer;
   color: #D3573C;
   text-decoration: none;
