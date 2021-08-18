@@ -48,6 +48,7 @@ const HandleContactForm = () => {
     }
 
 
+
     //function that shows the error state of an input
     const showError = (input) => {
         const parent = input.parentElement;
@@ -109,6 +110,11 @@ const HandleContactForm = () => {
     contactClose.addEventListener('click', closeForm);
     contactClose.addEventListener('keyup', () => {
         handleKeyEvent(closeForm);
+    })
+    window.addEventListener('keyup', (e) => {
+        if(e.key === "Escape") {
+            closeForm();
+        }
     })
 
 

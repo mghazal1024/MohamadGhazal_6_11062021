@@ -22,6 +22,7 @@ const HandleLightBox = () => {
     }
 
 
+
     // Open Light box
     pMedia.map( media => {
 
@@ -61,6 +62,11 @@ const HandleLightBox = () => {
     lightboxClose.addEventListener('click', closeLightbox)
     lightboxClose.addEventListener('keyup', () => {
         handleKeyEvent(closeLightbox)
+    })
+    window.addEventListener('keyup', (e) => {
+        if(e.key === "Escape") {
+            closeLightbox();
+        }
     })
 
     //Next button

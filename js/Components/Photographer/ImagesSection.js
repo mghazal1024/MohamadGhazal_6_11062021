@@ -26,7 +26,7 @@ const ImagesSection = (media) => {
             let mediaItem = `
             <li data-title="${item.title}" data-likes=${item.likes} data-date=${item.date}>
                 <div class="image" aria-label='${item.title} video' role="button" tabIndex="0">
-                    <video controls="controls" src="./images/${item.video}"></video>
+                    <video src="./images/${item.video}"></video>
                 </div>
                 <h4 class="image__title">${item.title}</h4>
                 <div class="image__rating">

@@ -3,7 +3,7 @@
 const InfoSection = (portrait, name, city, country, tagline, tags) => {
 
     let pTags = tags.map( tag => {
-        return `<li tabIndex="0">${tag}</li>`
+        return `<li tabIndex="0">#${tag}</li>`
     })
 
     let infoSection = `
