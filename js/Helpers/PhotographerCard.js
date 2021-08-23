@@ -9,7 +9,7 @@ const PhotographerCard = (photographers) => {
     const createPCard = (portrait, pName, city, country, tagline, price, tags, id) => {
 
         let pTags = tags.map( tag => {
-            return `<li>${tag}</li>`
+            return `<li>#${tag}</li>`
         })
 
         const tagString = tags.join(' ');
