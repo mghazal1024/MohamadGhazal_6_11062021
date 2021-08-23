@@ -277,8 +277,8 @@ main .photographers__tags {
     padding: 0 40px;
   }
   main .photographers {
-    padding: 100px 40px;
-    justify-content: space-evenly;
+    padding: 100px 0px;
+    justify-content: space-between;
   }
   main .photographers__list-item {
     width: 30%;

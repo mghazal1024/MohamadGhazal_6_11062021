@@ -2,9 +2,9 @@
 const ContactSection = (name) => {
     let contactSection = `
         <section class="contact">
-            <div class="contact__container">
-                <div class="contact__close" aria-label="Close form" role="button" tabIndex="0"></div>
-                <h2 class="contact__success" tabIndex="0">Merci ! Votre réservation a été reçue.</h2>
+            <div class="contact__container"  tabIndex="-1">
+                <div class="contact__close" aria-label="Close form" role="button"></div>
+                <h2 class="contact__success">Merci ! Votre réservation a été reçue.</h2>
                 <div class="contact__form">
                     <h1>Contactez-moi<br />${name}</h1>
                     <form name="contact" method="get" id="form">

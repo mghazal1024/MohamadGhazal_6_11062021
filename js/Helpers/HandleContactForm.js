@@ -19,21 +19,43 @@ const HandleContactForm = () => {
 
     // Function to open the form
     const openForm = () => {
-        photographer.style.display = "none";
-        photographerImages.style.display = "none";
-        totalLikesSection.style.display = "none";
-        header.style.display = "none";
         contact.classList.add('show');
         contactFormContainer.classList.remove('hide');;
         contactSuccess.classList.remove('show');
+
+        //Trapping the focus inside the modal form
+        const focusableElements = 'input, textarea, [tabindex]:not([tabindex="-1"]';
+        const firstFocusableElement = contact.querySelectorAll(focusableElements)[0];
+        const focusableContent = contact.querySelectorAll(focusableElements);
+        console.log(focusableContent)
+        const lastFocusableElement = focusableContent[focusableContent.length - 1];
+
+        document.addEventListener('keydown', function(e) {
+            let isTabPressed = e.key === 'Tab' || e.key.Code === 9;
+        
+            if (!isTabPressed) {
+            return;
+            }
+    
+            if (e.shiftKey) { 
+                if (document.activeElement === firstFocusableElement) {
+                    lastFocusableElement.focus();
+                    e.preventDefault();
+                }
+            } else { 
+            if (document.activeElement === lastFocusableElement) { 
+                firstFocusableElement.focus(); 
+                e.preventDefault();
+            }
+            }
+        });
+        
+        firstFocusableElement.focus(); 
+
     }
 
     // Function to close the form
     const closeForm = () => {
-        photographer.style.display = "grid";
-        photographerImages.style.display = "flex";
-        totalLikesSection.style.display = "flex";
-        header.style.display = "flex";
         contact.classList.remove('show')
         contactFormContainer.classList.remove('hide');;
         contactSuccess.classList.remove('show');
@@ -153,6 +175,10 @@ const HandleContactForm = () => {
             break;
         }
     })
+
+
+
+    
 
     
 
