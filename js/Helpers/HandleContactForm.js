@@ -11,10 +11,6 @@ const HandleContactForm = () => {
     const contactClose = contact.querySelector('.contact__close');
     const contactFormContainer = contact.querySelector('.contact__form');
     const contactSuccess = contact.querySelector('.contact__success');
-    const photographer = document.querySelector('.photographer');
-    const photographerImages = document.querySelector('.photographer__images');
-    const totalLikesSection = document.querySelector('.like-and-price-section');
-    const header = document.querySelector('header');
 
 
     // Function to open the form
@@ -30,7 +26,7 @@ const HandleContactForm = () => {
         const lastFocusableElement = focusableContent[focusableContent.length - 1];
 
         document.addEventListener('keydown', function(e) {
-            let isTabPressed = e.key === 'Tab' || e.key.Code === 9;
+            let isTabPressed = e.key === 'Tab' || e.keycode === 9;
         
             if (!isTabPressed) {
             return;
@@ -149,9 +145,12 @@ const HandleContactForm = () => {
         let formValid = nameValid && lastValid && emailValid && messageValid;
 
         if(formValid) {
-            console.log('valid');
             contactFormContainer.classList.add('hide');
             contactSuccess.classList.add('show');
+            console.log(`Prénom: ${firstName.value}`);
+            console.log(`Nom: ${lastName.value}`);
+            console.log(`Email: ${email.value}`);
+            console.log(`Message: ${message.value}`);
             form.reset();
         }
     })
