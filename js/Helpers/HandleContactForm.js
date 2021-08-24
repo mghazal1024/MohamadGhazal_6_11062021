@@ -27,7 +27,6 @@ const HandleContactForm = () => {
         const focusableElements = 'input, textarea, [tabindex]:not([tabindex="-1"]';
         const firstFocusableElement = contact.querySelectorAll(focusableElements)[0];
         const focusableContent = contact.querySelectorAll(focusableElements);
-        console.log(focusableContent)
         const lastFocusableElement = focusableContent[focusableContent.length - 1];
 
         document.addEventListener('keydown', function(e) {
